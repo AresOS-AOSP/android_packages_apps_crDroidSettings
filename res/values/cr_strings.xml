@@ -1614,4 +1614,8 @@
     <string name="reading_engine_mode_title">Comfort display (Reading mode)</string>
     <string name="display_engine_default">Default</string>
     <string name="display_engine_mode_footer_text">Inspired by Sony\'s Bravia/X-Reality engine, the Display Engine features Vivid mode for enhanced brightness and color saturation, X-Reality mode for improved detail and color accuracy, and Triluminous mode for a wider color range.</string>
+
+    <!-- Block wallpaper dimming -->
+    <string name="block_wallpaper_dimming_title">Ignore wallpaper dimming requests</string>
+    <string name="block_wallpaper_dimming_summary">Blocks all apps from setting the wallpaper dim</string>
 </resources>

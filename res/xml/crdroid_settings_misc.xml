@@ -127,6 +127,14 @@
         android:summary="@string/app_downgrade_summary"
         android:defaultValue="false"/>
 
+    <!-- Block wallpaper dimming -->
+    <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+        android:key="block_wallpaper_dimming"
+        android:icon="@drawable/ic_screensaver"
+        android:title="@string/block_wallpaper_dimming_title"
+        android:summary="@string/block_wallpaper_dimming_summary"
+        android:defaultValue="false" />
+
     <!-- Sidebar -->
     <Preference
         android:key="sidebar"

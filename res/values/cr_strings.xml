@@ -1320,4 +1320,8 @@
     <!-- Blur intensity -->
     <string name="blur_intensity_title">QS blur intensity</string>
     <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the QS background.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
+
+    <!-- Block wallpaper dimming -->
+    <string name="block_wallpaper_dimming_title">Ignore wallpaper dimming requests</string>
+    <string name="block_wallpaper_dimming_summary">Blocks all apps from setting the wallpaper dim</string>
 </resources>

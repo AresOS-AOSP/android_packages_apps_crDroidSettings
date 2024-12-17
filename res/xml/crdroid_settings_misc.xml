@@ -100,6 +100,13 @@
 
     <!-- Application downgrade -->
     <com.crdroid.settings.preferences.GlobalSettingSwitchPreference
+        android:key="window_ignore_secure"
+        android:icon="@drawable/ic_unlock_alert"
+        android:title="@string/ignore_window_secure_title"
+        android:summary="@string/ignore_window_secure_summary"
+        android:defaultValue="false"/>
+
+    <com.crdroid.settings.preferences.GlobalSettingSwitchPreference
         android:key="pm_downgrade_allowed"
         android:icon="@drawable/ic_arrow_down_box"
         android:title="@string/app_downgrade_title"

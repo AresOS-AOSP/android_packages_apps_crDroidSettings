@@ -33,4 +33,8 @@
     <!-- Ignore window secure -->
     <string name="ignore_window_secure_title">Ignore window secure flag</string>
     <string name="ignore_window_secure_summary">Remove screenshot and screenrecord security restrictions</string>
+
+    <!-- Hide screen capture status -->
+    <string name="hide_screen_capture_status_title">Hide screen capture status</string>
+    <string name="hide_screen_capture_status_summary">Hide screen capture and screen record status from all applications. \nRequires system reboot</string>
 </resources>

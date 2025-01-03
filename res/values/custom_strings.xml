@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016-2024 crDroid Android Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Media Player -->
+    <string name="media_player_title">Media player</string>
+    <string name="media_player_summary">Customize media player buttons</string>
+
+    <!-- Media player settings -->
+    <string name="media_controls_always_show_time_title">Always show time</string>
+    <string name="media_controls_always_show_time_summary">Always show passed and total time on media player</string>
+    <string name="media_controls_time_as_next_title">Time as next / previous</string>
+    <string name="media_controls_time_as_next_summary">Hide the next / previous buttons and use the always shown time for that instead</string>
+    <string name="media_controls_squiggle_title">Squiggly progress</string>
+    <string name="media_controls_squiggle_summary">Show a squiggly, annoying, useless, sperm-looking and distracting progress bar on media player</string>
+    <string name="media_controls_actions_title">Custom actions limit</string>
+    <string name="media_controls_actions_summary">The maximum number of buttons that apps are allowed to add to the player</string>
+</resources>

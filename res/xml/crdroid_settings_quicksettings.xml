@@ -278,6 +278,35 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/media_player_title" >
+        
+    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+        android:key="media_controls_always_show_time"
+        android:icon="@drawable/ic_music"
+        android:title="@string/media_controls_always_show_time_title"
+        android:summary="@string/media_controls_always_show_time_summary"
+        android:defaultValue="false" />
+        
+    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+        android:key="media_controls_time_as_next"
+        android:icon="@drawable/ic_arrow_keys"
+        android:title="@string/media_controls_time_as_next_title"
+        android:summary="@string/media_controls_time_as_next_summary"
+        android:dependency="media_controls_always_show_time"
+        android:defaultValue="false" />
+
+    <com.crdroid.settings.preferences.SecureSettingSeekBarPreference
+        android:key="media_controls_actions"
+        android:icon="@drawable/ic_google_circles"
+        android:title="@string/media_controls_actions_title"
+        android:summary="@string/media_controls_actions_summary"
+        android:max="5"
+        android:min="0"
+        android:defaultValue="5" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory 
          android:title="@string/qs_footer_category">
 

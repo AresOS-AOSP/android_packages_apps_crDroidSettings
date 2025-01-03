@@ -352,6 +352,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 KEY_QS_USE_MODIFIED_TILE_SPACING, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 KEY_BRIGHTNESS_SLIDER_STYLE, 1, UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(resolver,
+                "media_controls_always_show_time", 0, UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(resolver,
+                "media_controls_time_as_next", 0, UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(resolver,
+                "media_controls_actions", 5, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
     }
 

@@ -43,6 +43,13 @@
         android:summary="@string/game_spoofing_summary"
         android:fragment="com.crdroid.settings.fragments.misc.GameSpoofing" />
 
+    <Preference
+        android:key="default_usb_configuration"
+        android:fragment="com.android.settings.connecteddevice.usb.UsbDefaultFragment"
+        android:icon="@drawable/ic_usb_24"
+        android:title="@string/usb_default_config_title"
+        android:summary="@string/usb_default_config_summary"/>
+
     <!-- Gaming mode -->
     <Preference
         android:key="gaming_mode"

@@ -174,6 +174,13 @@
         android:key="lockscreen_misc_category"
         android:title="@string/misc_title">
 
+        <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+            android:key="keyguard_affordance_single_tap"
+            android:icon="@drawable/ic_double_tap"
+            android:title="@string/keyguard_affordance_single_tap_title"
+            android:summary="@string/keyguard_affordance_single_tap_summary"
+            android:defaultValue="false" />
+
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
                android:key="lockscreen_enable_power_menu"
                android:icon="@drawable/ic_power"

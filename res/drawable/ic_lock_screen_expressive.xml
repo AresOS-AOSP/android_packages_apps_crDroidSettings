@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016 crDroid Android Project
+     Copyright (C) 2025 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,13 +14,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="24.0dp"
-        android:height="24.0dp"
-        android:viewportWidth="24.0"
-        android:viewportHeight="24.0"
-        android:tint="?android:attr/colorControlNormal">
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M19,4h-4L7.11,16.63 4.5,12 9,4H5L0.5,12 5,20h4l7.89,-12.63L19.5,12 15,20h4l4.5,-8z"/>
-</vector>
+
+<com.android.settings.widget.TintDrawable
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_lock_screen"
+    android:tint="@color/homepage_blue_fg" />

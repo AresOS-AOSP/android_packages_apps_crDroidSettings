@@ -563,24 +563,6 @@ public class Buttons extends SettingsPreferenceFragment implements
                         : LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING));
     }
 
-    public static void reset(Context mContext) {
-        ContentResolver resolver = mContext.getContentResolver();
-        LineageSettings.System.putIntForUser(resolver,
-                LineageSettings.System.CLICK_PARTIAL_SCREENSHOT, 0, UserHandle.USER_CURRENT);
-        LineageSettings.System.putIntForUser(resolver,
-                LineageSettings.System.TORCH_LONG_PRESS_POWER_GESTURE, 0, UserHandle.USER_CURRENT);
-        LineageSettings.System.putIntForUser(resolver,
-                LineageSettings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.HARDWARE_KEYS_DISABLE, 0, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.SWAP_CAPACITIVE_KEYS, 0, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.ANBI_ENABLED, 0, UserHandle.USER_CURRENT);
-        ButtonBacklightBrightness.reset(mContext);
-        PowerMenuActions.reset(mContext);
-    }
-
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.CRDROID_SETTINGS;

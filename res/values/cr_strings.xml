@@ -24,15 +24,23 @@
 
     <!-- Personalization Categories -->
     <string name="button_title">Buttons</string>
+    <string name="button_summary">Power button, volume buttons</string>
     <string name="lockscreen_title">Lock Screen</string>
+    <string name="lockscreen_summary">Clock, interface, miscellaneous</string>
     <string name="misc_title">Miscellaneous</string>
+    <string name="misc_summary">System settings, spoofing</string>
     <string name="navigation_title">Navigation</string>
     <string name="notifications_title">Notifications</string>
+    <string name="notifications_summary">Alerts, flashlight</string>
     <string name="quicksettings_title">Quick Settings</string>
+    <string name="quicksettings_summary">Battery style, media player</string>
     <string name="sound_title">Sound</string>
+    <string name="sound_summary">Volume panel, vibrations</string>
     <string name="statusbar_title">Status Bar</string>
+    <string name="statusbar_summary">Interface, icons, gestures</string>
     <string name="display_title">Display</string>
     <string name="ui_title">User Interface</string>
+    <string name="ui_summary">Colors, fonts, icons</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

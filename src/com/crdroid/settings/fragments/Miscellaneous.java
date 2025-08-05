@@ -148,28 +148,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         }
     }
 
-    public static void reset(Context mContext) {
-        ContentResolver resolver = mContext.getContentResolver();
-        Settings.System.putIntForUser(resolver,
-                Settings.System.ENABLE_ROTATION_BUTTON, 1, UserHandle.USER_CURRENT);
-        Settings.System.putIntForUser(resolver,
-                Settings.System.POCKET_JUDGE, 0, UserHandle.USER_CURRENT);
-        LineageSettings.System.putIntForUser(resolver,
-                LineageSettings.System.AUTO_BRIGHTNESS_ONE_SHOT, 0, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PI_ENABLE_SPOOF, 1, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PI_GMS_CERT_CHAIN, 0, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PI_GAMES_SPOOF, 0, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PI_PHOTOS_SPOOF, 1, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PI_NETFLIX_SPOOF, 0, UserHandle.USER_CURRENT);
-        SensorBlock.reset(mContext);
-        SystemProperties.set("persist.sys.vbmeta.update", "true");
-    }
-
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.CRDROID_SETTINGS;

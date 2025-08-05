@@ -94,23 +94,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
         return false;
     }
 
-    public static void reset(Context mContext) {
-        ContentResolver resolver = mContext.getContentResolver();
-        Settings.System.putIntForUser(resolver,
-                Settings.System.CHARGING_ANIMATION, 1, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.PULSE_ON_NEW_TRACKS, 0, UserHandle.USER_CURRENT);
-        Settings.Secure.putIntForUser(resolver,
-                Settings.Secure.DOZE_ALWAYS_ON_WALLPAPER_ENABLED, mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_dozeSupportsAodWallpaper) ? 1 : 0,
-                UserHandle.USER_CURRENT);
-
-        DozeSettings.reset(mContext);
-        EdgeLightSettings.reset(mContext);
-        MonetSettings.reset(mContext);
-        SmartPixels.reset(mContext);
-    }
-
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.CRDROID_SETTINGS;

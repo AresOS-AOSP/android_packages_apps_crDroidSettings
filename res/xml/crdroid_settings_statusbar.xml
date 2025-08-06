@@ -48,13 +48,6 @@
             android:summary="@string/status_bar_clock_summary"
             android:fragment="com.crdroid.settings.fragments.statusbar.Clock" />
 
-        <Preference
-            android:key="network_traffic_settings"
-            android:icon="@drawable/ic_traffic"
-            android:title="@string/network_traffic_settings_title"
-            android:summary="@string/network_traffic_settings_summary"
-            android:fragment="com.crdroid.settings.fragments.statusbar.NetworkTrafficSettings" />
-
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="bluetooth_show_battery"
             android:icon="@drawable/ic_battery_bluetooth"

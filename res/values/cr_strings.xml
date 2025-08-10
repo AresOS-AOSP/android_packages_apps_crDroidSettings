@@ -1595,4 +1595,8 @@
     <!-- Single Tone QS -->
     <string name="qs_single_tone_title">Single tone QS</string>
     <string name="qs_single_tone_summary">Hide notification scrim for unified Quick Settings appearance</string>
+
+    <!-- Small landscape notifications -->
+    <string name="small_landscape_notification_title">Small landscape notifications</string>
+    <string name="small_landscape_notification_summary">Shows notifications smaller in width in notification panel when in landscape mode</string>
 </resources>

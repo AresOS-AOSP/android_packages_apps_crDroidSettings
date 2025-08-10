@@ -27,6 +27,13 @@
         android:summary="@string/notification_sound_vib_screen_on_summary"
         android:defaultValue="true" />
 
+    <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+        android:key="small_landscape_notification"
+        android:icon="@drawable/ic_rotation"
+        android:title="@string/small_landscape_notification_title"
+        android:summary="@string/small_landscape_notification_summary"
+        android:defaultValue="true" />
+
     <com.crdroid.settings.preferences.SecureSettingSwitchPreference
         android:key="notification_row_transparency"
         android:icon="@drawable/ic_chat_dashed"

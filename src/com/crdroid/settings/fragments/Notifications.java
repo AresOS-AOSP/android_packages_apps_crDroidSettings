@@ -168,6 +168,8 @@ public class Notifications extends SettingsPreferenceFragment implements
                 Settings.System.NOTIFICATION_GUTS_KILL_APP_BUTTON, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.HEADS_UP_TIMEOUT, getDefaultDecay(mContext), UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                "small_landscape_notification", 1, UserHandle.USER_CURRENT);
     }
 
     @Override

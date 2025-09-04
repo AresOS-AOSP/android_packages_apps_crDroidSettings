@@ -1357,4 +1357,8 @@
     <!-- Block wallpaper dimming -->
     <string name="block_wallpaper_dimming_title">Ignore wallpaper dimming requests</string>
     <string name="block_wallpaper_dimming_summary">Blocks all apps from setting the wallpaper dim</string>
+
+    <!-- Compact QS Media Player-->
+    <string name="qs_compact_media_player_mode_title">Compact QS media player</string>
+    <string name="qs_compact_media_player_mode_summary">Display media player in compact size</string>
 </resources>

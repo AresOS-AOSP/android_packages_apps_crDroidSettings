@@ -206,7 +206,21 @@
 
     <PreferenceCategory
         android:title="@string/media_player_title" >
-        
+
+    <com.crdroid.settings.preferences.OverlaySwitchPreference
+        android:key="com.android.system.qs.qscompactmedia"
+        android:icon="@drawable/ic_play_arrow"
+        android:title="@string/qs_compact_media_player_mode_title"
+        android:summary="@string/qs_compact_media_player_mode_summary"
+        android:defaultValue="false" />
+
+    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+        android:key="media_squiggle_animation"
+        android:icon="@drawable/ic_waves"
+        android:title="@string/media_squiggle_animation_title"
+        android:summary="@string/media_squiggle_animation_summary"
+        android:defaultValue="true" />
+
     <com.crdroid.settings.preferences.SecureSettingSwitchPreference
         android:key="media_controls_always_show_time"
         android:icon="@drawable/ic_music"
@@ -230,13 +244,6 @@
         android:max="5"
         android:min="0"
         android:defaultValue="5" />
-
-    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
-        android:key="media_squiggle_animation"
-        android:icon="@drawable/ic_waves"
-        android:title="@string/media_squiggle_animation_title"
-        android:summary="@string/media_squiggle_animation_summary"
-        android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory 

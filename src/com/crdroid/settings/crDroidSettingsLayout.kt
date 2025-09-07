@@ -67,7 +67,6 @@ class crDroidSettingsLayout : SettingsPreferenceFragment() {
                 5 -> Notifications()
                 6 -> Sound()
                 7 -> Miscellaneous()
-                8 -> About()
                 else -> StatusBar()
             }
         }
@@ -146,8 +145,7 @@ class crDroidSettingsLayout : SettingsPreferenceFragment() {
             R.string.ui_title,
             R.string.notifications_title,
             R.string.sound_title,
-            R.string.misc_title,
-            R.string.about_crdroid
+            R.string.misc_title
         )
     }
 }

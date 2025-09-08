@@ -1294,6 +1294,9 @@
     <string name="notification_row_transparency_lockscreen_title">Translucent lockscreen notifications</string>
     <string name="notification_row_transparency_lockscreen_summary">Set translucent background for notifications in lockscreen</string>
 
+    <string name="qs_nos">NothingOS notification corner</string>
+    <string name="qs_nos_summary">Make the notification corner radius similar to NothingOS</string>
+
     <!-- Ambient Wallpaper -->
     <string name="doze_always_on_wallpaper_title">Ambient wallpaper</string>
     <string name="doze_always_on_wallpaper_summary">Show lockscreen wallpaper on Ambient Display</string>

@@ -101,6 +101,13 @@
             android:summary="@string/qs_bt_show_dialog_summary"
             android:defaultValue="true" />
 
+        <com.crdroid.settings.preferences.OverlaySwitchPreference
+            android:key="com.android.system.qs.dualtone"
+            android:icon="@drawable/ic_color_bucket"
+            android:title="@string/qs_dual_tone_title"
+            android:summary="@string/qs_dual_tone_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -1308,4 +1308,8 @@
     <!-- Vbmeta hash attestation -->
     <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
     <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
+
+    <!-- QS Dual Tone Colors -->
+    <string name="qs_dual_tone_title">Alternate dark QS tone</string>
+    <string name="qs_dual_tone_summary">Use dark tone colors instead of AOSP accent tone</string>
 </resources>

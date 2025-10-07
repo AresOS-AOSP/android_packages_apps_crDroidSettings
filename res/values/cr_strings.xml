@@ -1312,4 +1312,12 @@
     <!-- QS Dual Tone Colors -->
     <string name="qs_dual_tone_title">Alternate dark QS tone</string>
     <string name="qs_dual_tone_summary">Use dark tone colors instead of AOSP accent tone</string>
+
+    <!-- Animation Settings -->
+    <string name="screen_animation_title">NothingOS doze animation</string>
+    <string name="screen_animation_summary">Switch to doze animations similar to NothingOS</string>
+
+    <!-- Blur intensity -->
+    <string name="blur_intensity_title">Blur intensity</string>
+    <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the system.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
 </resources>

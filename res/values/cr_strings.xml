@@ -1318,6 +1318,6 @@
     <string name="screen_animation_summary">Switch to doze animations similar to NothingOS</string>
 
     <!-- Blur intensity -->
-    <string name="blur_intensity_title">Blur intensity</string>
-    <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the system.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
+    <string name="blur_intensity_title">QS blur intensity</string>
+    <string name="blur_intensity_summary" formatted="false">Control the intensity of blur effects throughout the QS background.\n0% = no blur, 100% = system default, 200% = double intensity.</string>
 </resources>

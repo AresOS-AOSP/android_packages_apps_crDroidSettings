@@ -68,6 +68,17 @@
             android:entryValues="@array/status_bar_battery_percent_values"
             android:defaultValue="2" />
 
+    <!-- Blur Intensity -->
+    <com.crdroid.settings.preferences.SystemSettingSeekBarPreference
+        android:key="blur_intensity"
+        android:icon="@drawable/ic_blur_on"
+        android:title="@string/blur_intensity_title"
+        android:summary="@string/blur_intensity_summary"
+        android:max="200"
+        settings:min="0"
+        android:defaultValue="100"
+        settings:units="%" />
+
         <!-- Battery estimate
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_show_battery_estimate"

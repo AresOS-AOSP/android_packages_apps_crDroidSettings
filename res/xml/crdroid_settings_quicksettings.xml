@@ -213,6 +213,12 @@
         android:min="0"
         android:defaultValue="5" />
 
+    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+        android:key="media_squiggle_animation"
+        android:icon="@drawable/ic_waves"
+        android:title="@string/media_squiggle_animation_title"
+        android:summary="@string/media_squiggle_animation_summary"
+        android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory 

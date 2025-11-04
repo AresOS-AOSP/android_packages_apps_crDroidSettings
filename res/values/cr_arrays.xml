@@ -766,10 +766,9 @@
     <!-- QS Tiles Shape -->
     <string-array name="qs_tile_shape_entries" translatable="false">
         <item>@string/qs_tile_shape_dynamic</item>
-        <item>@string/qs_tile_shape_rounded_square_smooth</item>
+        <item>@string/qs_tile_shape_circle</item>
         <item>@string/qs_tile_shape_rounded_square</item>
         <item>@string/qs_tile_shape_square</item>
-        <item>@string/qs_tile_shape_circle</item>
     </string-array>
 
     <string-array name="qs_tile_shape_values" translatable="false">
@@ -777,7 +776,6 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
-        <item>4</item>
     </string-array>
 
     <!-- Lock screen album art filter -->

@@ -104,41 +104,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-         android:key="qs_brightness_slider_category"
-         android:title="@string/qs_brightness_slider_category">
-
-        <lineageos.preference.LineageSecureSettingListPreference
-            android:key="qs_show_brightness_slider"
-            android:icon="@drawable/ic_brightness"
-            android:title="@string/qs_show_brightness_slider_title"
-            android:entries="@array/qs_show_brightness_slider_entries"
-            android:entryValues="@array/qs_show_brightness_slider_values"
-            android:defaultValue="1" />
-
-        <lineageos.preference.LineageSecureSettingListPreference
-            android:key="qs_brightness_slider_position"
-            android:icon="@drawable/ic_brightness"
-            android:title="@string/qs_brightness_slider_position_title"
-            android:entries="@array/qs_brightness_slider_position_entries"
-            android:entryValues="@array/qs_brightness_slider_position_values"
-            android:defaultValue="0" />
-
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_brightness_slider_haptic"
-            android:icon="@drawable/ic_brightness"
-            android:title="@string/qs_brightness_slider_haptic_title"
-            android:summary="@string/qs_brightness_slider_haptic_summary" />
-
-        <lineageos.preference.LineageSecureSettingSwitchPreference
-            android:key="qs_show_auto_brightness"
-            android:icon="@drawable/ic_brightness_auto"
-            android:title="@string/qs_show_auto_brightness_title"
-            android:summary="@string/qs_show_auto_brightness_summary"
-            android:defaultValue="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="qs_layout_category"
         android:title="@string/qs_layout_category_title">
 
@@ -173,12 +138,6 @@
             android:title="@string/qs_layout_columns_rows_title"
             android:summary="@string/qs_layout_columns_rows_summary"
             android:fragment="com.crdroid.settings.fragments.quicksettings.LayoutSettings" />
-
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_tile_haptic"
-            android:icon="@drawable/ic_brightness"
-            android:title="@string/qs_brightness_slider_haptic_title"
-            android:summary="@string/qs_tile_haptic_summary" />
 
     </PreferenceCategory>
 

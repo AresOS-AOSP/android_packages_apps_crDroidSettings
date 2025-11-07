@@ -113,20 +113,6 @@
             android:summary="@string/spoofing_photos_summary"
             android:defaultValue="true" />
 
-        <!-- Encryption -->
-        <com.crdroid.settings.preferences.GlobalSettingSwitchPreference
-            android:key="spoofing_storage_encryption"
-            android:title="@string/spoofing_storage_encryption_title"
-            android:summary="@string/spoofing_storage_encryption_summary"
-            android:defaultValue="false" />
-
-        <!-- Snapchat -->
-        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.snap"
-            android:title="@string/spoofing_snap_title"
-            android:summary="@string/spoofing_snap_summary"
-            android:defaultValue="false" />
-
         <!-- Netflix -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.netflix"

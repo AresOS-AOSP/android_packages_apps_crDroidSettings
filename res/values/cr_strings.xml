@@ -1224,8 +1224,6 @@
     <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
     <string name="gms_spoof_title">Play Integrity fix</string>
     <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation</string>
-    <string name="spoofing_storage_encryption_title">Storage encryption</string>
-    <string name="spoofing_storage_encryption_summary">Spoof the device storage encryption status to \'Encrypted\'</string>
     <string name="spoofing_app_specific_category">App-Specific</string>
     <string name="spoofing_qsb_title">Google app</string>
     <string name="spoofing_qsb_summary">Spoof the Google app to the latest Pixel device to unlock exclusive features</string>
@@ -1233,8 +1231,6 @@
     <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
     <string name="spoofing_photos_title">Google Photos</string>
     <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
-    <string name="spoofing_snap_title">Snapchat</string>
-    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
     <string name="gameprops_title">Enable Game Props spoofing</string>
     <string name="gameprops_summary">Spoof your device as different model for specific games to unlock higher FPS</string>
     <string name="gameprops_load_json_title">Select Game Props JSON File</string>

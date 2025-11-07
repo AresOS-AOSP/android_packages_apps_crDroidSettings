@@ -28,12 +28,14 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.crdroid.SystemRestartUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.misc.SensorBlock;
+import com.crdroid.settings.preferences.SystemSettingSwitchPreference;
 
 import java.util.List;
 
@@ -49,9 +51,11 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
 
     private static final String POCKET_JUDGE = "pocket_judge";
     private static final String KEY_THREE_FINGERS_SWIPE = "three_fingers_swipe";
+    private static final String KEY_HIDE_SCREEN_CAPTURE = "hide_screen_capture_status";
 
     private Preference mPocketJudge;
     private ListPreference mThreeFingersSwipeAction;
+    private SystemSettingSwitchPreference  mHideScreenCapture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,9 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
                 LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
                 Action.NOTHING);
         mThreeFingersSwipeAction = initList(KEY_THREE_FINGERS_SWIPE, threeFingersSwipeAction);
+
+        mHideScreenCapture = (SystemSettingSwitchPreference) findPreference(KEY_HIDE_SCREEN_CAPTURE);
+        mHideScreenCapture.setOnPreferenceChangeListener(this);
     }
 
     private ListPreference initList(String key, Action value) {
@@ -99,6 +106,10 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         if (preference == mThreeFingersSwipeAction) {
             handleListChange((ListPreference) preference, newValue,
                     LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION);
+            return true;
+        }
+        if (preference == mHideScreenCapture) {
+            SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
         return false;

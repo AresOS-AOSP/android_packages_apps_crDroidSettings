@@ -1340,7 +1340,7 @@
 
     <!-- Vbmeta hash attestation -->
     <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
-    <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
+    <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot</string>
 
     <!-- QS Dual Tone Colors -->
     <string name="qs_dual_tone_title">Alternate dark QS tone</string>

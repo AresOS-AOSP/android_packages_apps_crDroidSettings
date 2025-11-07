@@ -36,7 +36,7 @@
 
     <!-- Hide screen capture status -->
     <string name="hide_screen_capture_status_title">Hide screen capture status</string>
-    <string name="hide_screen_capture_status_summary">Hide screen capture and screen record status from all applications. \nRequires system reboot</string>
+    <string name="hide_screen_capture_status_summary">Hide screen capture and screen record status from all applications</string>
 
     <!-- USB configuration -->
     <string name="usb_default_config_title">USB configuration</string>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright (C) 2016-2025 crDroid Android Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/spoofing_title">
+
+    <PreferenceCategory
+        android:key="spoofing_system_wide_category"
+        android:title="@string/spoofing_system_wide_category">
+
+        <!-- GMS spoof -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gms"
+            android:title="@string/gms_spoof_title"
+            android:summary="@string/gms_spoof_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="show_pif_properties"
+            android:title="@string/show_pif_properties_title"
+            android:summary="@string/show_pif_properties_summary"
+            android:dependency="persist.sys.pixelprops.gms" />
+
+        <Preference
+            android:key="update_pif_json"
+            android:title="@string/update_pif_json_title"
+            android:summary="@string/update_pif_json_summary"
+            android:dependency="persist.sys.pixelprops.gms" />
+
+        <Preference
+            android:key="pif_json_file_preference"
+            android:title="@string/pif_spoofing_title"
+            android:summary="@string/pif_spoofing_summary"
+            android:dependency="persist.sys.pixelprops.gms" />
+
+        <!-- Vbmeta hash attestation -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.vbmeta.update"
+            android:title="@string/vbmeta_attestation_title"
+            android:summary="@string/vbmeta_attestation_summary"
+            android:defaultValue="true" />
+
+        <!-- Keybox Data -->
+        <com.crdroid.settings.preferences.KeyboxDataPreference
+            android:key="keybox_data_setting"
+            android:title="@string/keybox_data_title" />
+
+        <!-- Pixel props -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
+            android:defaultValue="true" />
+
+        <!-- Tensor features -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.features.tensor"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spoofing_app_specific_category"
+        android:title="@string/spoofing_app_specific_category">
+
+        <!-- Games FPS -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.gameprops.enabled"
+            android:title="@string/gameprops_title"
+            android:summary="@string/gameprops_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="game_props_json_file_preference"
+            android:title="@string/gameprops_load_json_title"
+            android:summary="@string/gameprops_load_json_summary" />
+
+        <!-- Google App -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.qsb"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />
+
+        <!-- Play Store -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.vending"
+            android:title="@string/spoofing_vending_title"
+            android:summary="@string/spoofing_vending_summary"
+            android:defaultValue="true" />
+
+        <!-- Google Photos -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
+
+        <!-- Encryption -->
+        <com.crdroid.settings.preferences.GlobalSettingSwitchPreference
+            android:key="spoofing_storage_encryption"
+            android:title="@string/spoofing_storage_encryption_title"
+            android:summary="@string/spoofing_storage_encryption_summary"
+            android:defaultValue="false" />
+
+        <!-- Snapchat -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.snap"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />
+
+        <!-- Netflix -->
+        <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.netflix"
+            android:title="@string/spoofing_netflix_title"
+            android:summary="@string/spoofing_netflix_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

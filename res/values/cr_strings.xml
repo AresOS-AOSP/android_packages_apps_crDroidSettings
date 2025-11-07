@@ -41,6 +41,8 @@
     <string name="display_title">Display</string>
     <string name="ui_title">User Interface</string>
     <string name="ui_summary">Colors, fonts, icons</string>
+    <string name="spoofing_title">Spoofing</string>
+    <string name="spoofing_summary">Spoof as different device to unlock application features</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -1214,6 +1216,43 @@
     <string name="custom_style_ios">IOS</string>
     <string name="custom_style_layers">Layers</string>
 
+    <!-- Spoofing -->
+    <string name="spoofing_system_wide_category">System-Wide</string>
+    <string name="spoofing_pixel_props_title">Pixel props</string>
+    <string name="spoofing_pixel_props_summary">Spoof a select group of Google apps to the latest Pixel device</string>
+    <string name="tensor_spoof_title">Spoof tensor features</string>
+    <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
+    <string name="gms_spoof_title">Play Integrity fix</string>
+    <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation</string>
+    <string name="spoofing_storage_encryption_title">Storage encryption</string>
+    <string name="spoofing_storage_encryption_summary">Spoof the device storage encryption status to \'Encrypted\'</string>
+    <string name="spoofing_app_specific_category">App-Specific</string>
+    <string name="spoofing_qsb_title">Google app</string>
+    <string name="spoofing_qsb_summary">Spoof the Google app to the latest Pixel device to unlock exclusive features</string>
+    <string name="spoofing_vending_title">Play Store</string>
+    <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
+    <string name="spoofing_photos_title">Google Photos</string>
+    <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
+    <string name="spoofing_snap_title">Snapchat</string>
+    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+    <string name="gameprops_title">Enable Game Props spoofing</string>
+    <string name="gameprops_summary">Spoof your device as different model for specific games to unlock higher FPS</string>
+    <string name="gameprops_load_json_title">Select Game Props JSON File</string>
+    <string name="gameprops_load_json_summary">Pick Game Props JSON file to be used for spoofing games</string>
+    <string name="spoofing_netflix_title">Netflix</string>
+    <string name="spoofing_netflix_summary">Spoof your device as different model for Netflix</string>
+
+    <!-- Play Integrity fix JSON update -->
+    <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for Play Integrity.</string>
+    <string name="toast_spoofing_failure">Failed to spoof properties.</string>
+    <string name="update_pif_json_title">Update Play Integrity fix</string>
+    <string name="update_pif_json_summary">Update PIF spoofing device, requires internet connection.</string>
+    <string name="show_pif_properties_title">Play Integrity fix properties</string>
+    <string name="show_pif_properties_summary">Show all currently set PIF properties</string>
+    <string name="error_loading_properties">Error loading PIF properties</string>
+    <string name="pif_spoofing_title">Select PIF JSON file</string>
+    <string name="pif_spoofing_summary">Choose the PIF JSON file to be used to spoof Play Integrity</string>
+
     <!-- Keybox Data -->
     <string name="keybox_data_title">Keybox attestation override</string>
     <string name="keybox_data_summary">Load a custom keybox XML to override device key attestation</string>
@@ -1223,6 +1262,8 @@
     <string name="keybox_toast_missing_data">Invalid keybox XML: required fields missing</string>
     <string name="keybox_toast_file_loaded">Keybox loaded</string>
     <string name="keybox_toast_file_cleared">Keybox cleared</string>
+    <string name="keybox_check_title">Private Keybox spoof</string>
+    <string name="keybox_check_summary">Spoof the private key only if you have a valid Keybox for proper Strong Integrity</string>
 
     <!-- Force dark mode -->
     <string name="force_dark_title">Dark mode for third-party apps</string>

@@ -15,19 +15,14 @@
  */
 package com.crdroid.settings.fragments;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.view.View;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -39,7 +34,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.misc.SensorBlock;
-import com.crdroid.settings.preferences.KeyboxDataPreference;
 
 import java.util.List;
 
@@ -55,10 +49,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
 
     private static final String POCKET_JUDGE = "pocket_judge";
     private static final String KEY_THREE_FINGERS_SWIPE = "three_fingers_swipe";
-    private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
-    private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
-    private KeyboxDataPreference mKeyboxDataPreference;
     private Preference mPocketJudge;
     private ListPreference mThreeFingersSwipeAction;
 
@@ -81,19 +72,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
                 LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
                 Action.NOTHING);
         mThreeFingersSwipeAction = initList(KEY_THREE_FINGERS_SWIPE, threeFingersSwipeAction);
-
-        mKeyboxFilePickerLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                    Uri uri = result.getData().getData();
-                    Preference pref = findPreference(KEYBOX_DATA_KEY);
-                    if (pref instanceof KeyboxDataPreference) {
-                        ((KeyboxDataPreference) pref).handleFileSelected(uri);
-                    }
-                }
-            }
-        );
     }
 
     private ListPreference initList(String key, Action value) {
@@ -124,15 +102,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mKeyboxDataPreference = findPreference(KEYBOX_DATA_KEY);
-        if (mKeyboxDataPreference != null) {
-            mKeyboxDataPreference.setFilePickerLauncher(mKeyboxFilePickerLauncher);
-        }
     }
 
     @Override

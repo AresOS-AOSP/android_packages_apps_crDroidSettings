@@ -25,7 +25,7 @@
 
         <!-- GMS spoof -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.gms"
+            android:key="persist.sys.pp.gms"
             android:title="@string/gms_spoof_title"
             android:summary="@string/gms_spoof_summary"
             android:defaultValue="true" />
@@ -34,19 +34,19 @@
             android:key="show_pif_properties"
             android:title="@string/show_pif_properties_title"
             android:summary="@string/show_pif_properties_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <Preference
             android:key="update_pif_json"
             android:title="@string/update_pif_json_title"
             android:summary="@string/update_pif_json_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <Preference
             android:key="pif_json_file_preference"
             android:title="@string/pif_spoofing_title"
             android:summary="@string/pif_spoofing_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <!-- Vbmeta hash attestation -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
@@ -62,7 +62,7 @@
 
         <!-- Pixel props -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops"
+            android:key="persist.sys.pp"
             android:title="@string/spoofing_pixel_props_title"
             android:summary="@string/spoofing_pixel_props_summary"
             android:defaultValue="true" />
@@ -94,28 +94,28 @@
 
         <!-- Google App -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.qsb"
+            android:key="persist.sys.pp.qsb"
             android:title="@string/spoofing_qsb_title"
             android:summary="@string/spoofing_qsb_summary"
             android:defaultValue="false" />
 
         <!-- Play Store -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.vending"
+            android:key="persist.sys.pp.vending"
             android:title="@string/spoofing_vending_title"
             android:summary="@string/spoofing_vending_summary"
             android:defaultValue="true" />
 
         <!-- Google Photos -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.gphotos"
+            android:key="persist.sys.pp.gphotos"
             android:title="@string/spoofing_photos_title"
             android:summary="@string/spoofing_photos_summary"
             android:defaultValue="true" />
 
         <!-- Netflix -->
         <com.crdroid.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.netflix"
+            android:key="persist.sys.pp.netflix"
             android:title="@string/spoofing_netflix_title"
             android:summary="@string/spoofing_netflix_summary"
             android:defaultValue="false" />

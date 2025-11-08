@@ -74,12 +74,12 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private static final String KEY_GAME_PROPS_JSON_FILE_PREFERENCE = "game_props_json_file_preference";
     private static final String KEY_SYSTEM_WIDE_CATEGORY = "spoofing_system_wide_category";
     private static final String KEY_UPDATE_JSON_BUTTON = "update_pif_json";
-    private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
-    private static final String SYS_GOOGLE_SPOOF = "persist.sys.pixelprops";
-    private static final String SYS_GPHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
-    private static final String SYS_QSB_SPOOF = "persist.sys.pixelprops.qsb";
-    private static final String SYS_NETF_SPOOF = "persist.sys.pixelprops.netflix";
-    private static final String SYS_VENDING_SPOOF = "persist.sys.pixelprops.vending";
+    private static final String SYS_GMS_SPOOF = "persist.sys.pp.gms";
+    private static final String SYS_GOOGLE_SPOOF = "persist.sys.pp";
+    private static final String SYS_GPHOTOS_SPOOF = "persist.sys.pp.gphotos";
+    private static final String SYS_QSB_SPOOF = "persist.sys.pp.qsb";
+    private static final String SYS_NETF_SPOOF = "persist.sys.pp.netflix";
+    private static final String SYS_VENDING_SPOOF = "persist.sys.pp.vending";
     private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
     private static final String SYS_GAMEPROP_ENABLED = "persist.sys.gameprops.enabled";
     private static final String SYS_VBMETA_UPDATE = "persist.sys.vbmeta.update";
@@ -238,25 +238,25 @@ public class Spoofing extends SettingsPreferenceFragment implements
         try {
             JSONObject jsonObject = new JSONObject();
             String[] keys = {
-                "persist.sys.pihooks_ID",
-                "persist.sys.pihooks_BRAND",
-                "persist.sys.pihooks_DEVICE",
-                "persist.sys.pihooks_FINGERPRINT",
-                "persist.sys.pihooks_MANUFACTURER",
-                "persist.sys.pihooks_MODEL",
-                "persist.sys.pihooks_PRODUCT",
-                "persist.sys.pihooks_SECURITY_PATCH",
-                "persist.sys.pihooks_DEVICE_INITIAL_SDK_INT",
-                "persist.sys.pihooks_TYPE",
-                "persist.sys.pihooks_TAG",
-                "persist.sys.pihooks_RELEASE",
-                "persist.sys.pihooks_SDK_INT",
-                "persist.sys.pihooks_DEBUG"
+                "persist.sys.phk_ID",
+                "persist.sys.phk_BRAND",
+                "persist.sys.phk_DEVICE",
+                "persist.sys.phk_FINGERPRINT",
+                "persist.sys.phk_MANUFACTURER",
+                "persist.sys.phk_MODEL",
+                "persist.sys.phk_PRODUCT",
+                "persist.sys.phk_SECURITY_PATCH",
+                "persist.sys.phk_DEVICE_INITIAL_SDK_INT",
+                "persist.sys.phk_TYPE",
+                "persist.sys.phk_TAG",
+                "persist.sys.phk_RELEASE",
+                "persist.sys.phk_SDK_INT",
+                "persist.sys.phk_DEBUG"
             };
             for (String key : keys) {
                 String value = SystemProperties.get(key, null);
                 if (value != null) {
-                    String buildKey = key.replace("persist.sys.pihooks_", "");
+                    String buildKey = key.replace("persist.sys.phk_", "");
                     jsonObject.put(buildKey, value);
                 }
             }
@@ -336,8 +336,8 @@ public class Spoofing extends SettingsPreferenceFragment implements
                     for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
                         String key = it.next();
                         String value = jsonObject.getString(key);
-                        Log.d(TAG, "Setting property: persist.sys.pihooks_" + key + " = " + value);
-                        SystemProperties.set("persist.sys.pihooks_" + key, value);
+                        Log.d(TAG, "Setting property: persist.sys.phk_" + key + " = " + value);
+                        SystemProperties.set("persist.sys.phk_" + key, value);
                     }
                     mHandler.post(() -> {
                         String toastMessage = getString(R.string.toast_spoofing_success, spoofedModel);
@@ -367,8 +367,8 @@ public class Spoofing extends SettingsPreferenceFragment implements
                 for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
                     String key = it.next();
                     String value = jsonObject.getString(key);
-                    Log.d(TAG, "Setting PIF property: persist.sys.pihooks_" + key + " = " + value);
-                    SystemProperties.set("persist.sys.pihooks_" + key, value);
+                    Log.d(TAG, "Setting PIF property: persist.sys.phk_" + key + " = " + value);
+                    SystemProperties.set("persist.sys.phk_" + key, value);
                 }
                 killGMSPackages();
                 Toast.makeText(getContext(), "PIF JSON loaded and packages refreshed", Toast.LENGTH_SHORT).show();

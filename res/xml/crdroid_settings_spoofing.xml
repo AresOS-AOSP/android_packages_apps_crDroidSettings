@@ -85,7 +85,7 @@
             android:key="persist.sys.gameprops.enabled"
             android:title="@string/gameprops_title"
             android:summary="@string/gameprops_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <Preference
             android:key="game_props_json_file_preference"

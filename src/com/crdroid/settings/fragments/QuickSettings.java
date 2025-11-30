@@ -37,7 +37,9 @@ import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.quicksettings.LayoutSettings;
 import com.crdroid.settings.preferences.CustomSeekBarPreference;
+import com.crdroid.settings.preferences.SystemSettingSwitchPreference;
 import com.crdroid.settings.utils.DeviceUtils;
+import com.crdroid.settings.utils.SystemUtils;
 
 import lineageos.providers.LineageSettings;
 
@@ -61,6 +63,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_TILE_SHAPE = "qs_tile_shape";
     private static final String KEY_QS_TILE_ICON_SHAPE = "qs_tile_icon_shape";
     private static final String KEY_QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
+    private static final String KEY_SINGLE_QS_TONE_ENABLED = "single_qs_tone_enabled";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -71,6 +74,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private Preference mQsTileShape;
     private Preference mQsTileIconShape;
     private SwitchPreferenceCompat mQsTileLabelHide;
+    private SystemSettingSwitchPreference mSingleQsToneEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,6 +126,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         int panelStyle = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_PANEL_STYLE, 0, UserHandle.USER_CURRENT);
         updatePanelStylePrefs(panelStyle);
+
+        mSingleQsToneEnabled = (SystemSettingSwitchPreference) findPreference(KEY_SINGLE_QS_TONE_ENABLED);
+        if (mSingleQsToneEnabled != null) {
+            mSingleQsToneEnabled.setOnPreferenceChangeListener(this);
+        }
     }
 
     private void updatePanelStylePrefs(int panelStyle) {
@@ -153,6 +162,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mQsPanelStyle) {
             int value = Integer.parseInt((String) newValue);
             updatePanelStylePrefs(value);
+            return true;
+        } else if (preference == mSingleQsToneEnabled) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
         return false;

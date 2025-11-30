@@ -82,6 +82,14 @@
             android:summary="@string/lockscreen_quick_settings_summary"
             android:defaultValue="true" />
 
+        <!-- Single Tone QS -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="single_qs_tone_enabled"
+            android:icon="@drawable/ic_blur_on"
+            android:title="@string/qs_single_tone_title"
+            android:summary="@string/qs_single_tone_summary"
+            android:defaultValue="false" />
+
         <!--<com.crdroid.settings.preferences.SystemSettingSeekBarPreference
             android:key="qs_transparency"
             android:icon="@drawable/ic_color_bucket"

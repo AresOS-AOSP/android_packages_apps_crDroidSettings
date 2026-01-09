@@ -90,6 +90,14 @@
             android:summary="@string/qs_single_tone_summary"
             android:defaultValue="false" />
 
+        <!-- QS tile dual target -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="dual_target_tile_style"
+            android:icon="@drawable/ic_blur_on"
+            android:title="@string/dual_target_tile_style_title"
+            android:summary="@string/dual_target_tile_style_summary"
+            android:defaultValue="false" />
+
         <!-- QS tile alternate color -->
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_alternate_color"

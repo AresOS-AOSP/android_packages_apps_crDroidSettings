@@ -66,6 +66,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_TILE_ICON_SHAPE = "qs_tile_icon_shape";
     private static final String KEY_QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
     private static final String KEY_SINGLE_QS_TONE_ENABLED = "single_qs_tone_enabled";
+    private static final String KEY_DUAL_TARGET_TILE_STYLE = "dual_target_tile_style";
     private static final String KEY_QS_TILE_ALTERNATE_COLOR = "qs_tile_alternate_color";
 
     private ListPreference mShowBrightnessSlider;
@@ -80,6 +81,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private Preference mQsTileIconShape;
     private SwitchPreferenceCompat mQsTileLabelHide;
     private SystemSettingSwitchPreference mSingleQsToneEnabled;
+    private SystemSettingSwitchPreference mDualTargetTileStyle;
     private SwitchPreferenceCompat mQsTileAlternateColor;
 
     @Override
@@ -158,6 +160,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             mQsTileLabelHide.setVisible(isClassic);
         }
 
+        mDualTargetTileStyle = findPreference(KEY_DUAL_TARGET_TILE_STYLE);
+        if (mDualTargetTileStyle != null) {
+            mDualTargetTileStyle.setOnPreferenceChangeListener(this);
+        }
+
         mQsTileAlternateColor = findPreference(KEY_QS_TILE_ALTERNATE_COLOR);
         if (mQsTileAlternateColor != null) {
             mQsTileAlternateColor.setOnPreferenceChangeListener(this);
@@ -183,6 +190,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updatePanelStylePrefs(value);
             return true;
         } else if (preference == mSingleQsToneEnabled) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
+        } else if (preference == mDualTargetTileStyle) {
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mQsTileAlternateColor) {
@@ -234,6 +244,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 KEY_SINGLE_QS_TONE_ENABLED, 1, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 KEY_QS_TILE_ALTERNATE_COLOR, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_DUAL_TARGET_TILE_STYLE, 0, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
     }
 

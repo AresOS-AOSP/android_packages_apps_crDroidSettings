@@ -1638,4 +1638,8 @@
     <!-- QS tile alternate color -->
     <string name="qs_tile_alternate_color_title">Alternate QS tile color</string>
     <string name="qs_tile_alternate_color_summary">Use pre-qpr color for QS tiles</string>
+
+    <!-- QS tile dual target -->
+    <string name="dual_target_tile_style_title">Use single tone tile style</string>
+    <string name="dual_target_tile_style_summary">Apply full tile coloring for dual target tiles like WiFi and Bluetooth</string>
 </resources>

@@ -90,6 +90,14 @@
             android:summary="@string/qs_single_tone_summary"
             android:defaultValue="false" />
 
+        <!-- QS tile alternate color -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_alternate_color"
+            android:icon="@drawable/ic_blur_on"
+            android:title="@string/qs_tile_alternate_color_title"
+            android:summary="@string/qs_tile_alternate_color_summary"
+            android:defaultValue="false" />
+
         <!--<com.crdroid.settings.preferences.SystemSettingSeekBarPreference
             android:key="qs_transparency"
             android:icon="@drawable/ic_color_bucket"

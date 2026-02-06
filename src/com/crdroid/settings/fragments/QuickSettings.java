@@ -64,6 +64,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_TILE_ICON_SHAPE = "qs_tile_icon_shape";
     private static final String KEY_QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
     private static final String KEY_SINGLE_QS_TONE_ENABLED = "single_qs_tone_enabled";
+    private static final String KEY_QS_TILE_ALTERNATE_COLOR = "qs_tile_alternate_color";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mBrightnessSliderPosition;
@@ -75,6 +76,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private Preference mQsTileIconShape;
     private SwitchPreferenceCompat mQsTileLabelHide;
     private SystemSettingSwitchPreference mSingleQsToneEnabled;
+    private SwitchPreferenceCompat mQsTileAlternateColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,6 +147,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsTileLabelHide != null) {
             mQsTileLabelHide.setVisible(isClassic);
         }
+
+        mQsTileAlternateColor = findPreference(KEY_QS_TILE_ALTERNATE_COLOR);
+        if (mQsTileAlternateColor != null) {
+            mQsTileAlternateColor.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -164,6 +171,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updatePanelStylePrefs(value);
             return true;
         } else if (preference == mSingleQsToneEnabled) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
+        } else if (preference == mQsTileAlternateColor) {
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }

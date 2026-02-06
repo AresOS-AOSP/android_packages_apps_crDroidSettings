@@ -1605,4 +1605,8 @@
     <!-- Single tap for keyguard affordance -->
     <string name="keyguard_affordance_single_tap_title">Lockscreen shortcuts single tap</string>
     <string name="keyguard_affordance_single_tap_summary">Toggle lockscreen shortcuts with a single tap</string>
+
+    <!-- QS tile alternate color -->
+    <string name="qs_tile_alternate_color_title">Alternate QS tile color</string>
+    <string name="qs_tile_alternate_color_summary">Use pre-qpr color for QS tiles</string>
 </resources>

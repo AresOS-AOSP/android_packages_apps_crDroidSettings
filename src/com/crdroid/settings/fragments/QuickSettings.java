@@ -38,6 +38,7 @@ import com.android.settingslib.search.SearchIndexable;
 import com.crdroid.settings.fragments.quicksettings.LayoutSettings;
 import com.crdroid.settings.preferences.CustomSeekBarPreference;
 import com.crdroid.settings.preferences.SystemSettingSwitchPreference;
+import com.crdroid.settings.preferences.SystemSettingListPreference;
 import com.crdroid.settings.utils.DeviceUtils;
 import com.crdroid.settings.utils.SystemUtils;
 
@@ -68,6 +69,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SINGLE_QS_TONE_ENABLED = "single_qs_tone_enabled";
     private static final String KEY_DUAL_TARGET_TILE_STYLE = "dual_target_tile_style";
     private static final String KEY_QS_TILE_ALTERNATE_COLOR = "qs_tile_alternate_color";
+    private static final String KEY_QS_TILE_STYLE_MINIMAL = "qs_tile_style_minimal";
+    private static final String KEY_QS_TILE_STYLE_MINIMAL_INVERT = "qs_tile_style_minimal_invert";
+    private static final String KEY_QS_USE_MODIFIED_TILE_SPACING = "qs_use_modified_tile_spacing";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mVolumeSliderMode;
@@ -77,12 +81,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mShowRingerMode;
     private SwitchPreferenceCompat mQsTileHaptic;
     private ListPreference mQsPanelStyle;
-    private Preference mQsTileShape;
     private Preference mQsTileIconShape;
     private SwitchPreferenceCompat mQsTileLabelHide;
     private SystemSettingSwitchPreference mSingleQsToneEnabled;
     private SystemSettingSwitchPreference mDualTargetTileStyle;
     private SwitchPreferenceCompat mQsTileAlternateColor;
+    private SystemSettingSwitchPreference mQsTileStyleMinimal;
+    private SystemSettingSwitchPreference mQsTileStyleMinimalInvert;
+    private SystemSettingSwitchPreference mQsUseModifiedTileSpacing;
+    private SystemSettingListPreference mQsTileShape;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -169,6 +176,36 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsTileAlternateColor != null) {
             mQsTileAlternateColor.setOnPreferenceChangeListener(this);
         }
+
+        mQsUseModifiedTileSpacing = findPreference(KEY_QS_USE_MODIFIED_TILE_SPACING);
+        if (mQsUseModifiedTileSpacing != null) {
+            mQsUseModifiedTileSpacing.setOnPreferenceChangeListener(this);
+        }
+
+        mQsTileStyleMinimal = findPreference(KEY_QS_TILE_STYLE_MINIMAL);
+        mQsTileStyleMinimalInvert = findPreference(KEY_QS_TILE_STYLE_MINIMAL_INVERT);
+        mQsTileShape = findPreference(KEY_QS_TILE_SHAPE);
+
+        if (mQsTileStyleMinimal != null) {
+            mQsTileStyleMinimal.setOnPreferenceChangeListener(this);
+            updateMinimalStyleDependencies();
+        }
+    }
+
+    private void updateMinimalStyleDependencies() {
+        if (mQsTileStyleMinimal == null) return;
+
+        ContentResolver resolver = getContext().getContentResolver();
+        boolean isMinimalEnabled = Settings.System.getInt(resolver,
+                KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
+
+        if (mQsTileStyleMinimalInvert != null) {
+            mQsTileStyleMinimalInvert.setVisible(isMinimalEnabled);
+        }
+
+        if (mQsTileShape != null) {
+            mQsTileShape.setVisible(!isMinimalEnabled);
+        }
     }
 
     @Override
@@ -196,6 +233,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mQsTileAlternateColor) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
+        } else if (preference == mQsUseModifiedTileSpacing) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
+        } else if (preference == mQsTileStyleMinimal) {
+            updateMinimalStyleDependencies();
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }
@@ -246,6 +290,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 KEY_QS_TILE_ALTERNATE_COLOR, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 KEY_DUAL_TARGET_TILE_STYLE, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_TILE_STYLE_MINIMAL, 1, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_TILE_STYLE_MINIMAL_INVERT, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_USE_MODIFIED_TILE_SPACING, 0, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
     }
 
@@ -264,6 +314,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
                     final Resources res = context.getResources();
+                    final ContentResolver resolver = context.getContentResolver();
 
                     boolean automaticAvailable = res.getBoolean(
                             com.android.internal.R.bool.config_automatic_brightness_available);
@@ -275,6 +326,17 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     if (!hapticAvailable) {
                         keys.add(KEY_BRIGHTNESS_SLIDER_HAPTIC);
                         keys.add(KEY_QS_TILE_HAPTIC);
+                    }
+
+                    boolean isMinimalEnabled = Settings.System.getInt(resolver,
+                            KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
+                    
+                    if (!isMinimalEnabled) {
+                        keys.add(KEY_QS_TILE_STYLE_MINIMAL_INVERT);
+                    }
+                    
+                    if (isMinimalEnabled) {
+                        keys.add(KEY_QS_TILE_SHAPE);
                     }
 
                     return keys;

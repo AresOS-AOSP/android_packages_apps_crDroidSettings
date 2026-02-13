@@ -1614,4 +1614,16 @@
     <!-- QS tile dual target -->
     <string name="dual_target_tile_style_title">Use single tone tile style</string>
     <string name="dual_target_tile_style_summary">Apply full tile coloring for dual target tiles like WiFi and Bluetooth</string>
+
+    <!-- QS Minimal style -->
+    <string name="qs_tile_style_minimal_title">Minimal style</string>
+    <string name="qs_tile_style_minimal_summary">Use minimal style for QS tiles</string>
+    
+    <!-- QS Use modified tile spacing -->
+    <string name="qs_use_modified_tile_spacing_title">Use modified tile spacing</string>
+    <string name="qs_use_modified_tile_spacing_summary">Use modified tile spacing For proper symmetry</string>
+
+    <!-- QS Minimal style invert -->
+    <string name="qs_tile_style_minimal_invert_title">Invert tile shape</string>
+    <string name="qs_tile_style_minimal_invert_summary">Invert the shape of the minimal style tiles</string>
 </resources>

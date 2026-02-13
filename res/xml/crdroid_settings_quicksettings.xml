@@ -158,6 +158,27 @@
         android:key="qs_layout_category"
         android:title="@string/qs_layout_category_title">
 
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_style_minimal"
+            android:icon="@drawable/ic_shapes"
+            android:title="@string/qs_tile_style_minimal_title"
+            android:summary="@string/qs_tile_style_minimal_summary"
+            android:defaultValue="false" />
+
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_style_minimal_invert"
+            android:icon="@drawable/ic_shapes"
+            android:title="@string/qs_tile_style_minimal_invert_title"
+            android:summary="@string/qs_tile_style_minimal_invert_summary"
+            android:defaultValue="false" />
+
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_use_modified_tile_spacing"
+            android:icon="@drawable/ic_shapes"
+            android:title="@string/qs_use_modified_tile_spacing_title"
+            android:summary="@string/qs_use_modified_tile_spacing_summary"
+            android:defaultValue="false" />
+
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:key="qs_panel_style"
             android:icon="@drawable/ic_tile_medium"

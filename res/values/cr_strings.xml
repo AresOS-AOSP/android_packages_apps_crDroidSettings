@@ -1593,6 +1593,7 @@
     <string name="no_storage_restrict_summary">Remove the restriction when selecting folders through Storage Access Framework. Can be convenient in some cases but may lead to privacy leaks</string>
 
     <!-- Single Tone QS -->
+    <string name="qs_scrim_category_title">Scrim</string>
     <string name="qs_single_tone_title">Single tone QS</string>
     <string name="qs_single_tone_summary">Hide notification scrim for unified Quick Settings appearance</string>
 

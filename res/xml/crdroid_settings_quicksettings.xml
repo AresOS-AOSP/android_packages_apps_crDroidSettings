@@ -82,30 +82,6 @@
             android:summary="@string/lockscreen_quick_settings_summary"
             android:defaultValue="true" />
 
-        <!-- Single Tone QS -->
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="single_qs_tone_enabled"
-            android:icon="@drawable/ic_blur_on"
-            android:title="@string/qs_single_tone_title"
-            android:summary="@string/qs_single_tone_summary"
-            android:defaultValue="false" />
-
-        <!-- QS tile dual target -->
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="dual_target_tile_style"
-            android:icon="@drawable/ic_blur_on"
-            android:title="@string/dual_target_tile_style_title"
-            android:summary="@string/dual_target_tile_style_summary"
-            android:defaultValue="false" />
-
-        <!-- QS tile alternate color -->
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_tile_alternate_color"
-            android:icon="@drawable/ic_blur_on"
-            android:title="@string/qs_tile_alternate_color_title"
-            android:summary="@string/qs_tile_alternate_color_summary"
-            android:defaultValue="false" />
-
         <!--<com.crdroid.settings.preferences.SystemSettingSeekBarPreference
             android:key="qs_transparency"
             android:icon="@drawable/ic_color_bucket"
@@ -241,6 +217,36 @@
             android:title="@string/qs_brightness_slider_haptic_title"
             android:summary="@string/qs_tile_haptic_summary"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="qs_scrim_category"
+        android:title="@string/qs_scrim_category_title">
+
+        <!-- Single Tone QS -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="single_qs_tone_enabled"
+            android:icon="@drawable/ic_blur_on"
+            android:title="@string/qs_single_tone_title"
+            android:summary="@string/qs_single_tone_summary"
+            android:defaultValue="false" />
+
+        <!-- QS tile dual target -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="dual_target_tile_style"
+            android:icon="@drawable/ic_blur_on"
+            android:title="@string/dual_target_tile_style_title"
+            android:summary="@string/dual_target_tile_style_summary"
+            android:defaultValue="false" />
+
+        <!-- QS tile alternate color -->
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_tile_alternate_color"
+            android:icon="@drawable/ic_color_bucket"
+            android:title="@string/qs_tile_alternate_color_title"
+            android:summary="@string/qs_tile_alternate_color_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 

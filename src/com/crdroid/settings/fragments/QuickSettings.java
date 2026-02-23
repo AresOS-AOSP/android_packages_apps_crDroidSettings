@@ -36,7 +36,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.quicksettings.LayoutSettings;
-import com.crdroid.settings.fragments.quicksettings.QsHeaderImageSettings;
 import com.crdroid.settings.preferences.CustomSeekBarPreference;
 import com.crdroid.settings.utils.DeviceUtils;
 
@@ -198,7 +197,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         LineageSettings.Secure.putIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS, 1, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
-        QsHeaderImageSettings.reset(mContext);
     }
 
     @Override

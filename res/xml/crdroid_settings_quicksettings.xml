@@ -170,7 +170,7 @@
             android:icon="@drawable/ic_shapes"
             android:title="@string/qs_tile_style_minimal_title"
             android:summary="@string/qs_tile_style_minimal_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference
             android:key="qs_tile_style_minimal_invert"

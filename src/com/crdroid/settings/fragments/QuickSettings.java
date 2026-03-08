@@ -187,7 +187,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsTileStyleMinimal != null) {
             mQsTileStyleMinimal.setOnPreferenceChangeListener(this);
             boolean isMinimalEnabled = Settings.System.getInt(resolver,
-                    KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
+                    KEY_QS_TILE_STYLE_MINIMAL, 1) == 1;
             updateMinimalStyleDependencies(isMinimalEnabled);
         }
     }
@@ -371,7 +371,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     }
 
                     boolean isMinimalEnabled = Settings.System.getInt(resolver,
-                            KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
+                            KEY_QS_TILE_STYLE_MINIMAL, 1) == 1;
 
                     if (!isMinimalEnabled) {
                         keys.add(KEY_QS_TILE_STYLE_MINIMAL_INVERT);

@@ -242,7 +242,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         ContentResolver resolver = getContext().getContentResolver();
         boolean isSliderStyleEnabled = Settings.System.getInt(resolver,
-                KEY_BRIGHTNESS_SLIDER_STYLE, 0) == 1;
+                KEY_BRIGHTNESS_SLIDER_STYLE, 1) == 1;
 
         if (mBrightnessSliderShape != null) {
             mBrightnessSliderShape.setVisible(!isSliderStyleEnabled);
@@ -397,7 +397,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     }
 
                     boolean isSliderStyleEnabled = Settings.System.getInt(resolver,
-                            KEY_BRIGHTNESS_SLIDER_STYLE, 0) == 1;
+                            KEY_BRIGHTNESS_SLIDER_STYLE, 1) == 1;
 
                     if (isSliderStyleEnabled) {
                         keys.add(KEY_BRIGHTNESS_SLIDER_SHAPE);

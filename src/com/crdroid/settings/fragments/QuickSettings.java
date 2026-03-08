@@ -216,6 +216,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 mQsPanelStyle.setOnPreferenceChangeListener(this);
                 updatePanelStylePrefs(0);
             }
+       }
+
+        if (mDualTargetTileStyle != null) {
+            mDualTargetTileStyle.setVisible(!isMinimalEnabled);
         }
 
         if (mQsTileShape != null) {
@@ -363,6 +367,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
                     if (isMinimalEnabled) {
                         keys.add(KEY_QS_TILE_SHAPE);
+                        keys.add(KEY_DUAL_TARGET_TILE_STYLE);
                     }
 
                     boolean isSliderStyleEnabled = Settings.System.getInt(resolver,

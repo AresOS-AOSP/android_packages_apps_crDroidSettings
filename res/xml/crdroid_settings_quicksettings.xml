@@ -104,7 +104,7 @@
             android:icon="@drawable/ic_brightness"
             android:title="@string/qs_brightness_slider_style_title"
             android:summary="@string/qs_brightness_slider_style_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <lineageos.preference.LineageSecureSettingListPreference
             android:key="qs_show_brightness_slider"

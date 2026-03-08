@@ -258,7 +258,7 @@
             android:icon="@drawable/ic_blur_on"
             android:title="@string/qs_single_tone_title"
             android:summary="@string/qs_single_tone_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <!-- QS tile dual target -->
         <com.crdroid.settings.preferences.SystemSettingSwitchPreference

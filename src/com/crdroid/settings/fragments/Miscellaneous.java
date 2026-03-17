@@ -38,6 +38,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.misc.SensorBlock;
+import com.crdroid.settings.fragments.misc.IdleManagerSettings;
 
 import java.util.List;
 
@@ -119,6 +120,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
                 LineageSettings.System.AUTO_BRIGHTNESS_ONE_SHOT, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 "block_wallpaper_dimming", 0, UserHandle.USER_CURRENT);
+        IdleManagerSettings.reset(mContext);
         SensorBlock.reset(mContext);
     }
 

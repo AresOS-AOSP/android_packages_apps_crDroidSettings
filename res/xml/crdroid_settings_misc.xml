@@ -93,6 +93,14 @@
         android:summary="@string/app_downgrade_summary"
         android:defaultValue="false"/>
 
+    <!-- Block PairIP license activity -->
+    <com.crdroid.settings.preferences.SystemPropertySwitchPreference
+        android:key="persist.sys.pairip.activity.block"
+        android:icon="@drawable/ic_arrow_down_box"
+        android:title="@string/pairip_activity_block_title"
+        android:summary="@string/pairip_activity_block_summary"
+        android:defaultValue="false" /> 
+
     <!-- Block wallpaper dimming -->
     <com.crdroid.settings.preferences.SystemSettingSwitchPreference
         android:key="block_wallpaper_dimming"

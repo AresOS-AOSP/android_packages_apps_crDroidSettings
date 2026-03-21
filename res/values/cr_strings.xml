@@ -1630,4 +1630,8 @@
     <!-- Brightness slider style -->
     <string name="qs_brightness_slider_style_title">Minimal slider style</string>
     <string name="qs_brightness_slider_style_summary">Enable minimal style for brightness slider</string>
+
+    <!-- Block PairIP license activity -->
+    <string name="pairip_activity_block_title">Block PairIP license verification</string>
+    <string name="pairip_activity_block_summary">Prevent Play Store apps from launching the \"Get this app from Play\" screen when not installed by the Play Store</string>
 </resources>

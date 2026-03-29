@@ -1634,4 +1634,8 @@
     <!-- Block PairIP license activity -->
     <string name="pairip_activity_block_title">Block PairIP license verification</string>
     <string name="pairip_activity_block_summary">Prevent Play Store apps from launching the \"Get this app from Play\" screen when not installed by the Play Store</string>
+
+    <!-- Notification bubbles -->
+    <string name="notification_bubble_apps_title">Bubble notifications</string>
+    <string name="notification_bubble_apps_summary">Launch apps in a bubble when clicking their notifications</string>
 </resources>

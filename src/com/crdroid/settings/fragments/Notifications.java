@@ -170,6 +170,8 @@ public class Notifications extends SettingsPreferenceFragment implements
                 Settings.System.HEADS_UP_TIMEOUT, getDefaultDecay(mContext), UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 "small_landscape_notification", 1, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                "notification_bubble_apps", 0, UserHandle.USER_CURRENT);
     }
 
     @Override

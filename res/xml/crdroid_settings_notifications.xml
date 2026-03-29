@@ -62,6 +62,14 @@
         android:title="@string/notification_guts_kill_app_button_title"
         android:summary="@string/notification_guts_kill_app_button_summary" />
 
+    <!-- Notification bubble apps -->
+    <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+        android:key="notification_bubble_apps"
+        android:icon="@drawable/ic_floating"
+        android:title="@string/notification_bubble_apps_title"
+        android:summary="@string/notification_bubble_apps_summary"
+        android:defaultValue="false" />
+
     <!-- Show clipboard overlay -->
     <com.crdroid.settings.preferences.SecureSettingSwitchPreference
         android:key="show_clipboard_overlay"

@@ -1843,6 +1843,7 @@
     <string name="add">Add</string>
 
     <!-- Media Player -->
+    <string name="qs_show_media_player_summary">Display media controls in quick settings</string>
     <string name="media_player_title">Media player</string>
     <string name="media_player_summary">Customize media player buttons</string>
 

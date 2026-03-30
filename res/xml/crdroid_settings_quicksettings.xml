@@ -280,7 +280,14 @@
 
     <PreferenceCategory
         android:title="@string/media_player_title" >
-        
+
+    <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+        android:key="qs_show_media_player"
+        android:icon="@drawable/ic_music"
+        android:title="@string/media_player_title"
+        android:summary="@string/qs_show_media_player_summary"
+        android:defaultValue="true" />
+
     <com.crdroid.settings.preferences.SecureSettingSwitchPreference
         android:key="media_controls_always_show_time"
         android:icon="@drawable/ic_music"

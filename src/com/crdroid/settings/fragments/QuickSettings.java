@@ -74,6 +74,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QS_USE_MODIFIED_TILE_SPACING = "qs_use_modified_tile_spacing";
     private static final String KEY_BRIGHTNESS_SLIDER_STYLE = "qs_brightness_slider_style";
     private static final String KEY_BRIGHTNESS_SLIDER_SHAPE = "qs_brightness_slider_shape";
+    private static final String KEY_QS_SHOW_MEDIA_PLAYER = "qs_show_media_player";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mVolumeSliderMode;
@@ -94,6 +95,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mQsTileStyleMinimalInvert;
     private SystemSettingSwitchPreference mQsUseModifiedTileSpacing;
     private SystemSettingListPreference mQsTileShape;
+    private Preference mQsShowMediaPlayer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -148,6 +150,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mBrightnessSliderStyle != null) {
             mBrightnessSliderStyle.setOnPreferenceChangeListener(this);
             updateBrightnessSliderStyleDependencies();
+        }
+
+        mQsShowMediaPlayer = findPreference(KEY_QS_SHOW_MEDIA_PLAYER);
+        if (mQsShowMediaPlayer != null) {
+            mQsShowMediaPlayer.setOnPreferenceChangeListener(this);
         }
 
         mQsPanelStyle = findPreference(KEY_QS_PANEL_STYLE);
@@ -296,6 +303,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             updateBrightnessSliderStyleDependencies();
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
+        } else if (preference == mQsShowMediaPlayer) {
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
         }
         return false;
     }
@@ -338,6 +348,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 LineageSettings.Secure.QS_BRIGHTNESS_SLIDER_POSITION, 0, UserHandle.USER_CURRENT);
         LineageSettings.Secure.putIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS, 1, UserHandle.USER_CURRENT);
+        Settings.Secure.putIntForUser(resolver,
+                KEY_QS_SHOW_MEDIA_PLAYER, 1, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
     }
 

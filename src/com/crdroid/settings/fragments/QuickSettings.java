@@ -186,7 +186,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         if (mQsTileStyleMinimal != null) {
             mQsTileStyleMinimal.setOnPreferenceChangeListener(this);
-            updateMinimalStyleDependencies();
+            boolean isMinimalEnabled = Settings.System.getInt(resolver,
+                    KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
+            updateMinimalStyleDependencies(isMinimalEnabled);
         }
     }
 
@@ -204,15 +206,26 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private void updateMinimalStyleDependencies() {
+    private void updateMinimalStyleDependencies(boolean isMinimalEnabled) {
         if (mQsTileStyleMinimal == null) return;
 
         ContentResolver resolver = getContext().getContentResolver();
-        boolean isMinimalEnabled = Settings.System.getInt(resolver,
-                KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
 
         if (mQsTileStyleMinimalInvert != null) {
             mQsTileStyleMinimalInvert.setVisible(isMinimalEnabled);
+        }
+
+        if (mQsPanelStyle != null) {
+            mQsPanelStyle.setEnabled(!isMinimalEnabled);
+            if (isMinimalEnabled) {
+                mQsPanelStyle.setOnPreferenceChangeListener(null);
+                Settings.System.putIntForUser(resolver,
+                        Settings.System.QS_PANEL_STYLE, 0,
+                        UserHandle.USER_CURRENT);
+                mQsPanelStyle.setValue(String.valueOf(0));
+                mQsPanelStyle.setOnPreferenceChangeListener(this);
+                updatePanelStylePrefs(0);
+            }
         }
 
         if (mQsTileShape != null) {
@@ -272,7 +285,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mQsTileStyleMinimal) {
-            updateMinimalStyleDependencies();
+            updateMinimalStyleDependencies((Boolean) newValue);
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mBrightnessSliderStyle) {
@@ -369,18 +382,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
                     boolean isMinimalEnabled = Settings.System.getInt(resolver,
                             KEY_QS_TILE_STYLE_MINIMAL, 0) == 1;
-                    
+
                     if (!isMinimalEnabled) {
                         keys.add(KEY_QS_TILE_STYLE_MINIMAL_INVERT);
                     }
-                    
+
                     if (isMinimalEnabled) {
                         keys.add(KEY_QS_TILE_SHAPE);
                     }
 
                     boolean isSliderStyleEnabled = Settings.System.getInt(resolver,
                             KEY_BRIGHTNESS_SLIDER_STYLE, 0) == 1;
-                    
+
                     if (isSliderStyleEnabled) {
                         keys.add(KEY_BRIGHTNESS_SLIDER_SHAPE);
                         keys.add(KEY_SHOW_AUTO_BRIGHTNESS);

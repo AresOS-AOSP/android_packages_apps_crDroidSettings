@@ -154,20 +154,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mSingleQsToneEnabled != null) {
             mSingleQsToneEnabled.setOnPreferenceChangeListener(this);
         }
-    }
-
-    private void updatePanelStylePrefs(int panelStyle) {
-        boolean isClassic = panelStyle == 1;
-
-        if (mQsTileShape != null) {
-            mQsTileShape.setVisible(!isClassic);
-        }
-        if (mQsTileIconShape != null) {
-            mQsTileIconShape.setVisible(isClassic);
-        }
-        if (mQsTileLabelHide != null) {
-            mQsTileLabelHide.setVisible(isClassic);
-        }
 
         mDualTargetTileStyle = findPreference(KEY_DUAL_TARGET_TILE_STYLE);
         if (mDualTargetTileStyle != null) {
@@ -191,6 +177,20 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsTileStyleMinimal != null) {
             mQsTileStyleMinimal.setOnPreferenceChangeListener(this);
             updateMinimalStyleDependencies();
+        }
+    }
+
+    private void updatePanelStylePrefs(int panelStyle) {
+        boolean isClassic = panelStyle == 1;
+
+        if (mQsTileShape != null) {
+            mQsTileShape.setVisible(!isClassic);
+        }
+        if (mQsTileIconShape != null) {
+            mQsTileIconShape.setVisible(isClassic);
+        }
+        if (mQsTileLabelHide != null) {
+            mQsTileLabelHide.setVisible(isClassic);
         }
     }
 

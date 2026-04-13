@@ -20,6 +20,16 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/notifications_title">
 
+    <PreferenceCategory
+         android:title="@string/misc_title">
+
+    <Preference
+        android:key="essential_notifications"
+        android:icon="@drawable/ic_bell_ring"
+        android:title="@string/essential_notifications"
+        android:summary="@string/essential_notifications_summary"
+        android:fragment="com.crdroid.settings.fragments.notifications.EssentialNotificationsSettings" />
+
     <com.crdroid.settings.preferences.SystemSettingSwitchPreference
         android:key="notification_sound_vib_screen_on"
         android:icon="@drawable/ic_bell_ring"
@@ -78,6 +88,8 @@
         android:summary="@string/show_clipboard_overlay_summary"
         android:defaultValue="true"/>
 
+    </PreferenceCategory>
+    
     <PreferenceCategory
         android:key="heads_up"
         android:title="@string/notification_heads_up_title">

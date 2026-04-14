@@ -258,7 +258,8 @@ class FontsPickerPreference @JvmOverloads constructor(
                 val res = if (pkg == "android") Resources.getSystem() else pm.getResourcesForApplication(pkg)
                 val id = res.getIdentifier("config_bodyFontFamily", "string", pkg)
                 if (id == 0) return null
-                Typeface.create(res.getString(id), Typeface.NORMAL)
+                val familyName = res.getString(id)
+                Typeface.getSystemDefaultTypeface(familyName)
             } catch (e: Exception) {
                 Log.e(TAG, "Typeface load failed for pkg: $pkg", e)
                 null

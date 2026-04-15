@@ -52,7 +52,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
     public static final String TAG = "Miscellaneous";
 
     private static final String POCKET_JUDGE = "pocket_judge";
-    private static final String KEY_GMS_CERT_SPOOF = "pi_gms_cert_chain";
     private static final String KEY_THREE_FINGERS_SWIPE = "three_fingers_swipe";
 
     private Preference mPocketJudge;

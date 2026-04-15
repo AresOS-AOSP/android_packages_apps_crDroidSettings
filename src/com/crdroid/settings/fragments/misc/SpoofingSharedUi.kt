@@ -106,6 +106,21 @@ fun killPackages(activityManager: ActivityManager?, packages: Set<String>) {
 // via the optional `extraFilter` predicate.
 // ---------------------------------------------------------------------------
 
+// Overlay packages are stable for the process lifetime. Cache the set so
+// repeated filterInstalledApps calls (e.g. on showSystemApps toggles across
+// any screen) don't re-scan the full package list every time. Set to null to
+// invalidate if a package-install broadcast is ever observed.
+private var cachedOverlayPackages: Set<String>? = null
+
+private fun getOverlayPackages(pm: PackageManager): Set<String> {
+    cachedOverlayPackages?.let { return it }
+    return pm.getInstalledPackages(0)
+        .filter { it.overlayTarget != null }
+        .map { it.packageName }
+        .toSet()
+        .also { cachedOverlayPackages = it }
+}
+
 fun filterInstalledApps(
     pm: PackageManager,
     showSystem: Boolean,
@@ -113,10 +128,7 @@ fun filterInstalledApps(
     hidden: Set<String> = emptySet(),
     extraFilter: ((ApplicationInfo) -> Boolean)? = null,
 ): List<ApplicationInfo> {
-    val overlayPackages = pm.getInstalledPackages(0)
-        .filter { it.overlayTarget != null }
-        .map { it.packageName }
-        .toSet()
+    val overlayPackages = getOverlayPackages(pm)
 
     return pm.getInstalledApplications(PackageManager.GET_META_DATA)
         .filter { app ->
@@ -198,7 +210,7 @@ fun SystemAppBadge(
         else
             MaterialTheme.colorScheme.onTertiary,
     ) {
-        Text(stringResource(R.string.system_badge))
+        Text(stringResource(R.string.common_system_badge))
     }
 }
 
@@ -241,8 +253,11 @@ fun SpoofingHeaderCard(
                     .size(48.dp)
                     .clip(CircleShape)
                     .background(
-                        if (checked != false) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surfaceVariant,
+                        when (checked) {
+                            true  -> MaterialTheme.colorScheme.primary
+                            false -> MaterialTheme.colorScheme.surfaceVariant
+                            null  -> MaterialTheme.colorScheme.primaryContainer
+                        },
                     ),
                 contentAlignment = Alignment.Center,
             ) {

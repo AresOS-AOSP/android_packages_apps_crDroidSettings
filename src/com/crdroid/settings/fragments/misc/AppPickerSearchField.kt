@@ -30,14 +30,14 @@ fun AppPickerSearchField(
         value = query,
         onValueChange = onQueryChange,
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text(stringResource(R.string.search_apps)) },
+        placeholder = { Text(stringResource(R.string.action_search_apps)) },
         leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
         trailingIcon = {
             if (query.isNotEmpty()) {
                 IconButton(onClick = { onQueryChange("") }) {
                     Icon(
                         Icons.Default.Close,
-                        contentDescription = stringResource(R.string.clear_search),
+                        contentDescription = stringResource(R.string.common_clear_search),
                     )
                 }
             }

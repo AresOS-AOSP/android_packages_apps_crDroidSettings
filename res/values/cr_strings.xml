@@ -74,13 +74,6 @@
     <string name="restart_systemui">Restart SystemUI for change to take effect!</string>
     <string name="default_value">Default</string>
     <string name="apply">Apply</string>
-    <string name="show_system_apps">Show system apps</string>
-    <string name="hide_system_apps">Hide system apps</string>
-    <string name="search_apps">Search apps</string>
-    <string name="clear_search">Clear search</string>
-    <string name="select_all">Select all</string>
-    <string name="auto_select">Auto-select</string>
-    <string name="system_badge">SYS</string>
 
     <!-- Changelog -->
     <string name="changelog_crdroid_title">Current changelog</string>
@@ -1457,53 +1450,45 @@
     <string name="custom_system_theme_title">Themes</string>
     <string name="custom_system_theme_summary">Customize system appearance with themes and icon packs</string>
 
-    <!-- Misc preference entries -->
+    <!-- Play Integrity & TrickyStore -->
     <string name="play_integrity_fix_title">Play Integrity Fix</string>
     <string name="play_integrity_fix_summary">Manage PIF configuration and device fingerprints for basic integrity</string>
-    <string name="tricky_store_title">TrickyStore</string>
-    <string name="tricky_store_summary">Manage keybox and target apps for attestation for strong integrity</string>
-    <string name="game_spoofing_title">Game spoofing</string>
-    <string name="game_spoofing_summary">Spoof device properties for specific games</string>
-
-    <!-- Play Integrity Fix -->
     <string name="pif_status">Status</string>
     <string name="pif_active_config">Active configuration</string>
     <string name="pif_no_config">No configuration loaded</string>
     <string name="pif_config_loaded">Configuration loaded</string>
-    <string name="pif_fetch_pixel_beta">Fetch Pixel Beta fingerprint</string>
-    <string name="pif_fetch_pixel_beta_summary">Download latest Pixel Beta fingerprint from Google</string>
+    <string name="pif_fetch_pixel_beta">Fetch Pixel Canary fingerprint</string>
+    <string name="pif_fetch_pixel_beta_summary">Download the latest Pixel Canary fingerprint from Google</string>
     <string name="pif_fetching">Fetching from Google\u2026</string>
     <string name="pif_fetched_model">Fetched fingerprint for %s</string>
     <string name="pif_import_config">Import configuration</string>
-    <string name="pif_import_config_summary">Import PIF config from a file</string>
+    <string name="pif_import_config_summary">Import a PIF config from a file</string>
     <string name="pif_imported_as">Imported as %s</string>
     <string name="pif_delete_config">Delete active configuration</string>
-    <string name="pif_delete_config_summary">Remove the currently active config file</string>
+    <string name="pif_delete_config_summary">Remove the currently active configuration file</string>
     <string name="pif_delete_title">Delete %s?</string>
     <string name="pif_delete_message">This configuration file will be permanently removed.</string>
-    <string name="pif_delete">Delete</string>
     <string name="pif_deleted">Deleted %s</string>
-    <string name="pif_settings">Settings</string>
-    <string name="pif_spoof_photos">Spoof Google Photos</string>
-    <string name="pif_spoof_photos_summary">Unlimited original quality backup</string>
     <string name="pif_config_details">Configuration details</string>
     <string name="pif_failed">Failed: %s</string>
     <string name="pif_select_device">Select device</string>
     <string name="pif_generating">Generating configuration\u2026</string>
     <string name="pif_footer_title">Passing basic integrity</string>
-    <string name="pif_footer_body">1. Tap \"Fetch Pixel Beta fingerprint\" and select a device from the available list.\n2. If no devices are found, import a working PIF config from a trusted source. Config files are not provided; you must find one yourself.\n3. Recheck your Play Integrity status.\n\nAlways delete the active configuration before loading a new one. Loading an expired PIF config will cause strong integrity via TrickyStore to fail, even with a valid keybox.</string>
-    <string name="pif_select_channel">Select channel</string>
-    <string name="pif_channel_latest_release">Latest release</string>
-    <string name="pif_channel_canary_release">Canary release</string>
-
-    <!-- TrickyStore -->
+    <string name="pif_footer_body">1. Tap "Fetch Pixel Canary fingerprint" and select a device from the list.\n2. If no devices are found, import a working PIF config from a trusted source. Config files are not provided.\n3. Recheck your Play Integrity status.\n\nAlways delete the active configuration before loading a new one. Loading an expired PIF config will cause TrickyStore strong integrity to fail even with a valid keybox.</string>
+    <string name="pif_invalid_fingerprint">Invalid fingerprint format</string>
+    <string name="pif_no_devices_found">No devices found</string>
+    <string name="pif_no_api_key">Failed to extract Flash Tool API key</string>
+    <string name="pif_master_switch_title">Enable Play Integrity Fix</string>
+    <string name="tricky_store_title">TrickyStore</string>
+    <string name="tricky_store_summary">Manage keybox and target apps for strong integrity attestation</string>
+    <string name="ts_master_switch_title">Enable TrickyStore spoofing</string>
     <string name="ts_keybox_management">Keybox management</string>
     <string name="ts_import_keybox">Import keybox</string>
     <string name="ts_no_keybox">No keybox installed</string>
     <string name="ts_keybox_installed">Keybox installed</string>
     <string name="ts_keybox_imported">Keybox imported successfully</string>
     <string name="ts_delete_keybox">Delete keybox</string>
-    <string name="ts_delete_keybox_summary">Remove keybox file</string>
+    <string name="ts_delete_keybox_summary">Remove the keybox file</string>
     <string name="ts_delete_keybox_title">Delete keybox?</string>
     <string name="ts_delete_keybox_message">The keybox file will be permanently removed.</string>
     <string name="ts_keybox_deleted">Keybox deleted</string>
@@ -1513,48 +1498,52 @@
     <string name="ts_target_apps_count">%d apps configured</string>
     <string name="ts_import_target_list">Import target list</string>
     <string name="ts_import_target_list_summary">Import target.txt from a file</string>
+    <string name="ts_invalid_patch_date">Invalid date format. Use YYYY-MM-DD</string>
     <string name="ts_target_list_imported">Target list imported</string>
+    <string name="ts_targets_saved">Target list saved</string>
     <string name="ts_failed">Failed: %s</string>
     <string name="ts_footer_title">Passing strong integrity</string>
-    <string name="ts_footer_body">1. Obtain a valid keybox XML from a trusted source. Keyboxes are not provided; you must find one yourself.\n2. Tap \"Import keybox\" and load the file.\n3. Open \"Manage target apps\" and select Google Play Services and Google Play Store.\n4. Set target mode to \"Leaf\" if your device has a working TEE, otherwise leave it as Auto.\n5. Recheck your Play Integrity status.\n\nAlways delete the existing keybox before importing a new one. If Google revokes a keybox, it may still allow passing up to device integrity even though strong integrity will fail.</string>
-    <string name="ts_verification_mode">Verification mode</string>
-    <string name="ts_verification_mode_auto">Auto</string>
-    <string name="ts_verification_auto_count">%1$d auto</string>
-    <string name="ts_verification_cert_count">%1$d cert</string>
-    <string name="ts_verification_leaf_count">%1$d leaf</string>
+    <string name="ts_footer_body">1. Obtain a valid keybox XML from a trusted source. Keyboxes are not provided; you must find one yourself.\n2. Tap \"Import keybox\" and load the file.\n3. Open \"Manage target apps\" and select Google Play Services and Google Play Store.\n4. Set target mode to \"Leaf\" if your device has a working TEE; otherwise leave it as Auto.\n5. Recheck your Play Integrity status.\n\nAlways delete the existing keybox before importing a new one. If Google revokes a keybox, it may still allow passing up to device integrity even though strong integrity will fail.</string>
     <string name="ts_patch_date_hint" translatable="false">YYYY-MM-DD</string>
-    <string name="ts_invalid_patch_date">Invalid date format. Use YYYY-MM-DD</string>
     <string name="ts_security_patch">Security patch date</string>
     <string name="ts_no_patch">Not set (using device default)</string>
+    <string name="ts_select_target_apps">Select target apps</string>
+    <string name="ts_select_target_apps_desc">Choose apps to enable attestation spoofing</string>
     <string name="ts_selected_count">%d selected</string>
     <string name="ts_mode_auto">Auto</string>
     <string name="ts_mode_leaf">Leaf</string>
     <string name="ts_mode_cert">Cert</string>
-
-    <!-- Game Spoofing -->
-    <string name="gs_enable">Enable game spoofing</string>
-    <string name="gs_enable_summary">Spoof device properties for configured games</string>
-    <string name="gs_add_app">Add game</string>
-    <string name="gs_add_app_summary">Select an app and device profile to spoof</string>
-    <string name="gs_reload">Reload</string>
-    <string name="gs_reload_summary">Reload configuration from disk</string>
-    <string name="gs_configured_apps">Configured games</string>
-    <string name="gs_no_apps">No games configured</string>
-    <string name="gs_no_apps_summary">Tap \"Add game\" to get started</string>
-    <string name="gs_select_app">Select app</string>
-    <string name="gs_select_profile">Select device profile</string>
-    <string name="gs_edit_props">Edit properties</string>
-    <string name="gs_change_profile">Change device profile</string>
-    <string name="gs_remove">Remove</string>
-    <string name="gs_remove_title">Remove game?</string>
-    <string name="gs_remove_message">Remove %s from game spoofing?</string>
-    <string name="gs_edit_app">Edit %s</string>
-    <string name="gs_key">Key</string>
-    <string name="gs_value">Value</string>
-    <string name="gs_save">Save</string>
-    <string name="gs_config_saved">Configuration saved</string>
-    <string name="gs_loading_apps">Loading apps\u2026</string>
-    <string name="gs_failed">Failed: %s</string>
+    <string name="ts_verification_mode">Verification mode</string>
+    <string name="ts_verification_mode_auto">Auto</string>
+    <string name="ts_verification_mode_cert">Cert</string>
+    <string name="ts_verification_mode_leaf">Leaf</string>
+    <string name="ts_verification_auto_count">%1$d auto</string>
+    <string name="ts_verification_cert_count">%1$d cert</string>
+    <string name="ts_verification_leaf_count">%1$d leaf</string>
+    <string name="ts_revocation_status">Revocation status</string>
+    <string name="ts_revocation_checking">Checking revocation status…</string>
+    <string name="ts_revocation_no_keybox">No keybox installed</string>
+    <string name="ts_revocation_valid">✓ Valid — not revoked</string>
+    <string name="ts_revocation_revoked">✗ Revoked (%s)</string>
+    <string name="ts_revocation_suspended">⚠ Suspended (%s)</string>
+    <string name="ts_revocation_soft_banned">Soft-banned (Strong Integrity will fail)</string>
+    <string name="ts_revocation_network_error">Could not reach revocation server</string>
+    <string name="ts_revocation_error">Check failed: %s</string>
+    <string name="ts_revocation_last_checked">Last checked: %1$s</string>
+    <string name="ts_revocation_tap_to_check">Tap to check revocation status</string>
+    <string name="ts_revocation_not_yet_checked">Status not yet checked — tap to check</string>
+    <string name="ts_fetch_keybox">Fetch official keybox</string>
+    <string name="ts_fetch_keybox_summary">Download keybox from our servers</string>
+    <string name="ts_fetch_keybox_fetching">Fetching keybox…</string>
+    <string name="ts_fetch_keybox_success">Official keybox fetched successfully</string>
+    <string name="ts_fetch_keybox_failed">Fetch failed: %s</string>
+    <string name="ts_fetch_keybox_revoked_refetch">Keybox revoked, fetching a newer one…</string>
+    <string name="ts_fetch_keybox_same_file">Keybox is already up to date</string>
+    <string name="ts_fetch_keybox_blocked">Your keybox is valid — no fetch needed</string>
+    <string name="ts_fetch_keybox_last_fetched">Last fetched: %1$s</string>
+    <string name="ts_fetch_keybox_auto_replaced">Keybox automatically replaced with a valid one</string>
+    <string name="ts_fetch_keybox_soft_banned_refetch">Keybox soft-banned, keeping it and attempting to fetch a better one…</string>
+    <string name="ts_fetch_keybox_no_valid_found">No valid keybox available yet, will retry tomorrow</string>
 
     <!-- Build details -->
     <string name="build_maintainer_title">Device maintainer</string>
@@ -1637,6 +1626,73 @@
     <string name="notification_bubble_apps_title">Bubble notifications</string>
     <string name="notification_bubble_apps_summary">Launch apps in a bubble when clicking their notifications</string>
 
+    <!-- Spoofing -->
+    <string name="spoofing_title">Spoofing</string>
+    <string name="spoofing_summary">Play Integrity, device identity, and feature spoofing</string>
+    <string name="spoofing_integrity_category">Play Integrity</string>
+    <string name="spoofing_identity_category">Device identity</string>
+    <string name="spoofing_features_category">Hardware features</string>
+    <string name="spoofing_pixel_props_title">Pixel props</string>
+    <string name="spoofing_pixel_props_summary">Spoof selected apps as a Pixel device to unlock Pixel-exclusive features</string>
+    <string name="spoofing_app_specific_category">App-specific overrides</string>
+    <string name="spoofing_photos_title">Google Photos</string>
+    <string name="spoofing_photos_summary">Spoof Google Photos as a Pixel XL</string>
+    <string name="spoofing_snap_title">Snapchat</string>
+    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+    <string name="spoofing_applying_changes">Applying spoof changes\u2026</string>
+    <string name="tensor_spoof_title">Tensor feature targets</string>
+    <string name="tensor_spoof_summary">Grant selected apps access to Pixel Tensor-exclusive AI features</string>
+    <string name="tensor_spoof_enable">Tensor spoofing</string>
+    <string name="tensor_spoof_enable_summary">Grant selected apps access to Pixel Tensor-exclusive features</string>
+    <string name="tensor_targets_none_configured">No apps targeted</string>
+    <string name="tensor_targets_count">%1$d apps targeted</string>
+    <string name="tensor_targets_empty_description">Selected apps will report Tensor hardware features to unlock AI and Pixel-exclusive functionality</string>
+    <string name="user_selectable_app_spoofing_title">App &amp; game spoofing</string>
+    <string name="user_selectable_app_spoofing_summary">Spoof device properties for specific apps and games</string>
+    <string name="user_select_spoofing_profile_title">Select spoofing profile</string>
+    <string name="app_spoofing_category_title">Per-app spoofing</string>
+    <string name="app_spoofing_header_title">Enable spoofing</string>
+    <string name="app_spoofing_configured_count">%1$d apps &amp; games spoofed</string>
+    <string name="app_spoofing_disabled">Disabled</string>
+    <string name="app_spoofing_add_apps">Add apps &amp; games</string>
+    <string name="app_spoofing_clear_all">Clear all</string>
+    <string name="app_spoofing_configured_apps">Configured apps &amp; games</string>
+    <string name="app_spoofing_no_apps_configured">No apps or games configured</string>
+    <string name="app_spoofing_spoof_model">Spoof model</string>
+    <string name="app_spoofing_select_spoof_model">Select spoof model</string>
+    <string name="app_spoofing_change_app">Change app</string>
+    <string name="app_spoofing_empty_description">Selected apps will report a spoofed device identity to bypass hardware checks</string>
+    <string name="app_spoofing_clear_all_confirm">This will remove all configured app spoofing entries.</string>
+    <string name="app_spoofing_no_apps_available">No apps or games available</string>
+    <string name="app_spoofing_no_apps_found">No results for "%s"</string>
+    <string name="app_spoofing_longpress_hint">Long press to quickly reassign a profile</string>
+    <string name="app_spoofing_remove_title">Remove app?</string>
+    <string name="app_spoofing_remove_confirm">Remove %1$s from the spoofing list?</string>
+    <string name="add_new_spoof_profile">Add new profile</string>
+    <string name="add_custom_spoof_profile_title">Add custom spoof profile</string>
+    <string name="custom_spoof_profile_name">Profile name</string>
+    <string name="custom_spoof_profile_brand">Brand</string>
+    <string name="custom_spoof_profile_manufacturer">Manufacturer</string>
+    <string name="custom_spoof_profile_device">Device</string>
+    <string name="custom_spoof_profile_model">Model</string>
+    <string name="custom_spoof_profile_fingerprint">Fingerprint (optional)</string>
+    <string name="custom_spoof_profile_product">Product (optional)</string>
+    <string name="pp_target_count">Spoofing %1$d app(s) as Pixel</string>
+    <string name="pp_spoof_as">Spoof as</string>
+    <string name="pp_empty_description">Selected apps will report the chosen Pixel device identity to unlock Pixel-exclusive features</string>
+    <string name="pp_mainline_unsupported">This device is already a Pixel. Spoofing is not available on mainline Pixel devices.</string>
+
+    <!-- Generic actions & labels -->
+    <string name="action_delete">Delete</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_search_apps">Search apps</string>
+    <string name="action_select_all">Select all</string>
+    <string name="action_add_installed">Add installed</string>
+    <string name="show_system_apps">Show system apps</string>
+    <string name="hide_system_apps">Hide system apps</string>
+    <string name="common_clear_search">Clear search</string>
+    <string name="common_system_badge">SYS</string>
+
     <!-- Idle Manager -->
     <string name="idle_manager_title">Idle Manager</string>
     <string name="idle_manager_summary">Manage background processes and optimize battery life</string>
@@ -1695,6 +1751,4 @@
     <string name="idle_manager_clear_stats_title">Clear stats</string>
     <string name="idle_manager_clear_stats_confirm">This will permanently delete all enforcement history. The idle manager will continue running normally.</string>
     <string name="idle_manager_clear_stats_button">Clear</string>
-    <string name="show_system_apps">Show system apps</string>
-    <string name="hide_system_apps">Hide system apps</string>
 </resources>

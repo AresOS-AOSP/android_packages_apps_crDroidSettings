@@ -198,7 +198,7 @@ fun SystemAppBadge(
         else
             MaterialTheme.colorScheme.onTertiary,
     ) {
-        Text(stringResource(R.string.system_badge))
+        Text(stringResource(R.string.common_system_badge))
     }
 }
 

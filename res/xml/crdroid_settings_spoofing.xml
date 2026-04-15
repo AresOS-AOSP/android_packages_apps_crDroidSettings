@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Evolution X
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/spoofing_title">
+
+    <!-- Integrity -->
+    <PreferenceCategory
+        android:key="spoofing_integrity_category"
+        android:title="@string/spoofing_integrity_category">
+
+        <!-- TrickyStore -->
+        <Preference
+            android:key="tricky_store"
+            android:title="@string/tricky_store_title"
+            android:summary="@string/tricky_store_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.TrickyStore" />
+
+        <!-- Play Integrity Fix -->
+        <Preference
+            android:key="play_integrity_fix"
+            android:title="@string/play_integrity_fix_title"
+            android:summary="@string/play_integrity_fix_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.PlayIntegrityFix" />
+    </PreferenceCategory>
+
+    <!-- Device Identity -->
+    <PreferenceCategory
+        android:key="spoofing_identity_category"
+        android:title="@string/spoofing_identity_category">
+
+        <!-- App Spoofing -->
+        <Preference
+            android:key="user_selectable_app_spoofing"
+            android:title="@string/user_selectable_app_spoofing_title"
+            android:summary="@string/user_selectable_app_spoofing_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.UserSelectedAppSpoofSettings" />
+
+        <!-- Pixel props -->
+        <Preference
+            android:key="pi_pp_spoof"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.PixelPropsSettings" />
+    </PreferenceCategory>
+
+    <!-- Features -->
+    <PreferenceCategory
+        android:key="spoofing_features_category"
+        android:title="@string/spoofing_features_category">
+
+        <!-- Tensor feature targets -->
+        <Preference
+            android:key="tensor_targets_settings"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
+            android:fragment="com.crdroid.settings.fragments.misc.TensorTargetsSettings" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spoofing_app_specific_category"
+        android:title="@string/spoofing_app_specific_category">
+
+        <!-- Google Photos -->
+        <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+            android:key="pi_photos_spoof"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
+
+        <!-- Snapchat -->
+        <com.crdroid.settings.preferences.SecureSettingSwitchPreference
+            android:key="pi_snapchat_spoof"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

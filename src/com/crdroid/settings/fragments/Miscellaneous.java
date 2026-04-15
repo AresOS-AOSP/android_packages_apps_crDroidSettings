@@ -39,6 +39,7 @@ import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.misc.SensorBlock;
 import com.crdroid.settings.fragments.misc.IdleManagerSettings;
+import com.crdroid.settings.fragments.misc.Spoofing;
 
 import java.util.List;
 
@@ -53,7 +54,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
     public static final String TAG = "Miscellaneous";
 
     private static final String POCKET_JUDGE = "pocket_judge";
-    private static final String KEY_GMS_CERT_SPOOF = "pi_gms_cert_chain";
     private static final String KEY_THREE_FINGERS_SWIPE = "three_fingers_swipe";
 
     private Preference mPocketJudge;
@@ -121,6 +121,7 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
         Settings.System.putIntForUser(resolver,
                 "block_wallpaper_dimming", 0, UserHandle.USER_CURRENT);
         IdleManagerSettings.reset(mContext);
+        Spoofing.reset(mContext);
         SensorBlock.reset(mContext);
     }
 

@@ -1864,4 +1864,11 @@
     <string name="reboot_required_title">Reboot required</string>
     <string name="reboot_required_message">A reboot is required for the changes to take effect. Reboot now?</string>
     <string name="reboot_device">Reboot</string>
+
+    <!-- Emoji style -->
+    <string name="emoji_style_title">Emoji style</string>
+    <string name="emoji_style_summary">Choose the system emoji pack without changing text fonts</string>
+    <string name="emoji_style_stock">Stock</string>
+    <string name="emoji_style_ios">iOS</string>
+    <string name="emoji_style_samsung">Samsung</string>
 </resources>

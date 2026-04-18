@@ -36,12 +36,16 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
+import com.crdroid.settings.preferences.SystemPropertyListPreference;
+
 import com.crdroid.settings.fragments.ui.DozeSettings;
 import com.crdroid.settings.fragments.ui.EdgeLightSettings;
 import com.crdroid.settings.fragments.ui.GradientSettings;
 import com.crdroid.settings.fragments.ui.MonetSettings;
 import com.crdroid.settings.fragments.ui.SettingsIcon;
 import com.crdroid.settings.fragments.ui.SmartPixels;
+
+import com.crdroid.settings.utils.SystemUtils;
 
 import java.util.List;
 
@@ -52,8 +56,10 @@ public class UserInterface extends SettingsPreferenceFragment implements
     public static final String TAG = "UserInterface";
 
     private static final String KEY_FORCE_FULL_SCREEN = "display_cutout_force_fullscreen_settings";
+    private static final String KEY_EMOJI_STYLE = "persist.sys.ax_emoji_style";
 
     private Preference mShowCutoutForce;
+    private SystemPropertyListPreference mEmojiStyle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,12 @@ public class UserInterface extends SettingsPreferenceFragment implements
 
         Context mContext = getActivity().getApplicationContext();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mEmojiStyle = findPreference(KEY_EMOJI_STYLE);
+
+        if (mEmojiStyle != null) {
+            mEmojiStyle.setOnPreferenceChangeListener(this);
+        }
 
 	    final String displayCutout =
             mContext.getResources().getString(com.android.internal.R.string.config_mainBuiltInDisplayCutout);
@@ -75,6 +87,10 @@ public class UserInterface extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (KEY_EMOJI_STYLE.equals(preference.getKey())) {
+            SystemUtils.showRebootDialog(requireContext());
+            return true;
+        }
         return false;
     }
 

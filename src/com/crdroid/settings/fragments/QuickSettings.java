@@ -75,6 +75,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_BRIGHTNESS_SLIDER_STYLE = "qs_brightness_slider_style";
     private static final String KEY_BRIGHTNESS_SLIDER_SHAPE = "qs_brightness_slider_shape";
     private static final String KEY_QS_SHOW_MEDIA_PLAYER = "qs_show_media_player";
+    private static final String KEY_QS_WIDGET_PANEL = "qs_widget_panel";
+    private static final String KEY_QS_WIDGET_IOS_MUSIC = "qs_widget_ios_music";
+    private static final String KEY_QS_WIDGET_SLIDER_CORNER = "qs_widget_slider_corner";
 
     private ListPreference mShowBrightnessSlider;
     private ListPreference mVolumeSliderMode;
@@ -96,6 +99,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mQsUseModifiedTileSpacing;
     private SystemSettingListPreference mQsTileShape;
     private Preference mQsShowMediaPlayer;
+    private SystemSettingSwitchPreference mQsWidgetPanel;
+    private SystemSettingSwitchPreference mQsWidgetIosMusic;
+    private SystemSettingSwitchPreference mQsWidgetSliderCorner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -156,6 +162,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsShowMediaPlayer != null) {
             mQsShowMediaPlayer.setOnPreferenceChangeListener(this);
         }
+
+        mQsWidgetPanel = findPreference(KEY_QS_WIDGET_PANEL);
+        if (mQsWidgetPanel != null) {
+            mQsWidgetPanel.setOnPreferenceChangeListener(this);
+        }
+        mQsWidgetIosMusic = findPreference(KEY_QS_WIDGET_IOS_MUSIC);
+        mQsWidgetSliderCorner = findPreference(KEY_QS_WIDGET_SLIDER_CORNER);
+        updateWidgetPanelDependencies();
 
         mQsPanelStyle = findPreference(KEY_QS_PANEL_STYLE);
         mQsPanelStyle.setOnPreferenceChangeListener(this);
@@ -264,6 +278,28 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private boolean isWidgetPanelEnabled() {
+        ContentResolver resolver = getContext().getContentResolver();
+        return Settings.System.getIntForUser(resolver,
+                KEY_QS_WIDGET_PANEL, 0, UserHandle.USER_CURRENT) == 1;
+    }
+
+    private void updateWidgetPanelDependencies() {
+        updateWidgetPanelDependencies(isWidgetPanelEnabled());
+    }
+
+    private void updateWidgetPanelDependencies(boolean enabled) {
+        if (mQsWidgetIosMusic != null) {
+            mQsWidgetIosMusic.setEnabled(enabled);
+        }
+        if (mQsWidgetSliderCorner != null) {
+            mQsWidgetSliderCorner.setEnabled(enabled);
+        }
+        if (mQsShowMediaPlayer != null) {
+            mQsShowMediaPlayer.setEnabled(!enabled);
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContext().getContentResolver();
@@ -306,6 +342,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mQsShowMediaPlayer) {
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
+        } else if (preference == mQsWidgetPanel) {
+            updateWidgetPanelDependencies((Boolean) newValue);
+            SystemUtils.showSystemUiRestartDialog(getActivity());
+            return true;
         }
         return false;
     }
@@ -342,6 +382,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_SHOW_VOLUME_SLIDER, 1, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.QS_SHOW_RINGER_MODE, 1, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_WIDGET_PANEL, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_WIDGET_IOS_MUSIC, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                KEY_QS_WIDGET_SLIDER_CORNER, 0, UserHandle.USER_CURRENT);
         LineageSettings.Secure.putIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT);
         LineageSettings.Secure.putIntForUser(resolver,

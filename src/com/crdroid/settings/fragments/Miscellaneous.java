@@ -37,8 +37,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
-import com.crdroid.settings.fragments.misc.SensorBlock;
-
 import java.util.List;
 
 import lineageos.providers.LineageSettings;
@@ -118,7 +116,6 @@ public class Miscellaneous extends SettingsPreferenceFragment implements
                 Settings.System.SCREEN_ON_MEMORY_RECLAIM, 1, UserHandle.USER_CURRENT);
         LineageSettings.System.putIntForUser(resolver,
                 LineageSettings.System.AUTO_BRIGHTNESS_ONE_SHOT, 0, UserHandle.USER_CURRENT);
-        SensorBlock.reset(mContext);
     }
 
     @Override

@@ -37,6 +37,7 @@ import com.android.settingslib.search.SearchIndexable;
 
 import com.crdroid.settings.fragments.quicksettings.LayoutSettings;
 import com.crdroid.settings.preferences.CustomSeekBarPreference;
+import com.crdroid.settings.preferences.SecureSettingListPreference;
 import com.crdroid.settings.preferences.SystemSettingSwitchPreference;
 import com.crdroid.settings.preferences.SystemSettingListPreference;
 import com.crdroid.settings.utils.DeviceUtils;
@@ -98,7 +99,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mQsTileStyleMinimalInvert;
     private SystemSettingSwitchPreference mQsUseModifiedTileSpacing;
     private SystemSettingListPreference mQsTileShape;
-    private Preference mQsShowMediaPlayer;
+    private SecureSettingListPreference mQsShowMediaPlayer;
     private SystemSettingSwitchPreference mQsWidgetPanel;
     private SystemSettingSwitchPreference mQsWidgetIosMusic;
     private SystemSettingSwitchPreference mQsWidgetSliderCorner;
@@ -162,6 +163,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsShowMediaPlayer != null) {
             mQsShowMediaPlayer.setOnPreferenceChangeListener(this);
         }
+        boolean showMediaPlayer = Settings.Secure.getIntForUser(resolver,
+                KEY_QS_SHOW_MEDIA_PLAYER, 2, UserHandle.USER_CURRENT) != 0;
 
         mQsWidgetPanel = findPreference(KEY_QS_WIDGET_PANEL);
         if (mQsWidgetPanel != null) {
@@ -298,6 +301,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsShowMediaPlayer != null) {
             mQsShowMediaPlayer.setEnabled(!enabled);
         }
+
+        boolean showMediaPlayer = Settings.Secure.getIntForUser(getContext().getContentResolver(),
+                KEY_QS_SHOW_MEDIA_PLAYER, 2, UserHandle.USER_CURRENT) != 0;
     }
 
     @Override
@@ -395,7 +401,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         LineageSettings.Secure.putIntForUser(resolver,
                 LineageSettings.Secure.QS_SHOW_AUTO_BRIGHTNESS, 1, UserHandle.USER_CURRENT);
         Settings.Secure.putIntForUser(resolver,
-                KEY_QS_SHOW_MEDIA_PLAYER, 1, UserHandle.USER_CURRENT);
+                KEY_QS_SHOW_MEDIA_PLAYER, 2, UserHandle.USER_CURRENT);
         LayoutSettings.reset(mContext);
     }
 

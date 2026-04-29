@@ -390,6 +390,18 @@
         <item>1</item>
     </string-array>
 
+    <string-array name="qs_show_media_player_entries" translatable="false">
+        <item>@string/qs_show_media_player_hide</item>
+        <item>@string/qs_show_media_player_top</item>
+        <item>@string/qs_show_media_player_bottom</item>
+    </string-array>
+
+    <string-array name="qs_show_media_player_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- Values for the notification light pulse spinners -->
     <string-array name="notification_breath_length_entries" translatable="false">
         <item>@string/pulse_length_always_on</item>

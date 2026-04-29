@@ -1843,11 +1843,12 @@
     <string name="add">Add</string>
 
     <!-- Media Player -->
-    <string name="qs_show_media_player_summary">Display media controls in quick settings</string>
     <string name="media_player_title">Media player</string>
     <string name="media_player_summary">Customize media player buttons</string>
-    <string name="qs_show_media_player_title">Media player</string>
-    <string name="qs_show_media_player_summary">Display media controls in quick settings</string>
+    <string name="qs_show_media_player_title">Media player position</string>
+    <string name="qs_show_media_player_hide">Hide</string>
+    <string name="qs_show_media_player_top">Show at top</string>
+    <string name="qs_show_media_player_bottom">Show at bottom</string>
 
     <!-- Media player settings -->
     <string name="media_controls_always_show_time_title">Always show time</string>

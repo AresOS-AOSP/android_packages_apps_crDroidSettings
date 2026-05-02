@@ -26,6 +26,19 @@
         android:summary="@string/spoofing_summary"
         android:fragment="com.crdroid.settings.fragments.misc.Spoofing" />
 
+    <!-- Sandbox -->
+    <Preference
+        android:key="sandbox"
+        android:icon="@drawable/ic_sandbox"
+        android:title="@string/sandbox_title"
+        android:summary="@string/sandbox_summary">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.axion.sandbox"
+            android:targetClass="com.android.axion.sandbox.MainActivity" />
+    </Preference>
+
     <Preference
         android:key="default_usb_configuration"
         android:fragment="com.android.settings.connecteddevice.usb.UsbDefaultFragment"

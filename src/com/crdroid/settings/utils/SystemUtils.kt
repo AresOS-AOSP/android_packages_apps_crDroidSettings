@@ -18,14 +18,19 @@ package com.crdroid.settings.utils
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.os.ServiceManager
+import android.util.Log
 import android.widget.Toast
 
 import androidx.appcompat.app.AlertDialog
 
+import com.android.internal.statusbar.IStatusBarService
 import com.android.settings.R
 import com.android.internal.util.crdroid.Utils
 
 object SystemUtils {
+
+    private const val TAG = "SystemUtils"
 
     @JvmStatic
     fun showSystemUiRestartDialog(context: Context) {
@@ -50,5 +55,28 @@ object SystemUtils {
         Handler(Looper.getMainLooper()).postDelayed({
             Utils.restartSystemUI()
         }, 2000) // 2-second delay
+    }
+
+    @JvmStatic
+    fun showRebootDialog(context: Context) {
+        AlertDialog.Builder(context)
+            .setTitle(R.string.reboot_required_title)
+            .setMessage(R.string.reboot_required_message)
+            .setPositiveButton(R.string.reboot_device) { _, _ ->
+                rebootDevice(context)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    @JvmStatic
+    fun rebootDevice(context: Context) {
+        try {
+            val binder = ServiceManager.getService("statusbar")
+            val statusBarService = IStatusBarService.Stub.asInterface(binder)
+            statusBarService.reboot(false, "settings_change")
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to reboot device via statusbar service", e)
+        }
     }
 } 

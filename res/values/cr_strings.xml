@@ -1859,4 +1859,9 @@
     <!-- Sandbox -->
     <string name="sandbox_title">Sandbox</string>
     <string name="sandbox_summary">Lock, hide, and isolate apps</string>
+
+    <!-- Reboot dialog -->
+    <string name="reboot_required_title">Reboot required</string>
+    <string name="reboot_required_message">A reboot is required for the changes to take effect. Reboot now?</string>
+    <string name="reboot_device">Reboot</string>
 </resources>

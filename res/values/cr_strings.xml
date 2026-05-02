@@ -1781,4 +1781,8 @@
     <string name="media_controls_squiggle_summary">Show a squiggly, annoying, useless, sperm-looking and distracting progress bar on media player</string>
     <string name="media_controls_actions_title">Custom actions limit</string>
     <string name="media_controls_actions_summary">The maximum number of buttons that apps are allowed to add to the player</string>
+
+    <!-- Sandbox -->
+    <string name="sandbox_title">Sandbox</string>
+    <string name="sandbox_summary">Lock, hide, and isolate apps</string>
 </resources>

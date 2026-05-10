@@ -186,27 +186,6 @@
             android:summary="@string/qs_use_modified_tile_spacing_summary"
             android:defaultValue="false" />
 
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_widget_panel"
-            android:icon="@drawable/ic_controls_icon"
-            android:title="@string/qs_widget_panel_title"
-            android:summary="@string/qs_widget_panel_summary"
-            android:defaultValue="false" />
-
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_widget_ios_music"
-            android:icon="@drawable/ic_music"
-            android:title="@string/qs_widget_ios_music_title"
-            android:summary="@string/qs_widget_ios_music_summary"
-            android:defaultValue="false" />
-
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
-            android:key="qs_widget_slider_corner"
-            android:icon="@drawable/ic_rounded_corner"
-            android:title="@string/qs_widget_slider_corner_title"
-            android:summary="@string/qs_widget_slider_corner_summary"
-            android:defaultValue="false" />
-
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:key="qs_panel_style"
             android:icon="@drawable/ic_tile_medium"
@@ -295,6 +274,33 @@
             android:icon="@drawable/ic_color_bucket"
             android:title="@string/qs_tile_alternate_color_title"
             android:summary="@string/qs_tile_alternate_color_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="qs_widget_category"
+        android:title="@string/qs_widget_category_title">
+
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_widget_panel"
+            android:icon="@drawable/ic_qs_tile"
+            android:title="@string/qs_widget_panel_title"
+            android:summary="@string/qs_widget_panel_summary"
+            android:defaultValue="false" />
+
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_widget_ios_music"
+            android:icon="@drawable/ic_music"
+            android:title="@string/qs_widget_ios_music_title"
+            android:summary="@string/qs_widget_ios_music_summary"
+            android:defaultValue="false" />
+
+        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+            android:key="qs_widget_slider_corner"
+            android:icon="@drawable/ic_rounded_corner"
+            android:title="@string/qs_widget_slider_corner_title"
+            android:summary="@string/qs_widget_slider_corner_summary"
             android:defaultValue="false" />
 
     </PreferenceCategory>

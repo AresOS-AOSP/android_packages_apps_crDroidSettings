@@ -1879,6 +1879,7 @@
     <string name="emoji_style_facebook">Facebook</string>
 
     <!-- QS widget -->
+    <string name="qs_widget_category_title">Widgets</string>
     <string name="qs_widget_panel_title">Show widget in QS panel</string>
     <string name="qs_widget_panel_summary">Show media and volume, brightness widget in QS panel</string>
     <string name="qs_widget_ios_music_title">Show iOS music widget</string>

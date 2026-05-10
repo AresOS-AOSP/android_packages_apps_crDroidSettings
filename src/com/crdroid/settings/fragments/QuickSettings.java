@@ -301,9 +301,29 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (mQsShowMediaPlayer != null) {
             mQsShowMediaPlayer.setEnabled(!enabled);
         }
+        if (mShowBrightnessSlider != null) {
+            mShowBrightnessSlider.setEnabled(!enabled);
+        }
+        if (mBrightnessSliderStyle != null) {
+            mBrightnessSliderStyle.setEnabled(!enabled);
+        }
+        if (mBrightnessSliderShape != null) {
+            mBrightnessSliderShape.setEnabled(!enabled);
+        }
 
         boolean showMediaPlayer = Settings.Secure.getIntForUser(getContext().getContentResolver(),
                 KEY_QS_SHOW_MEDIA_PLAYER, 2, UserHandle.USER_CURRENT) != 0;
+    }
+
+    private void applyWidgetPanelBrightnessSlider(boolean enabled) {
+        ContentResolver resolver = getContext().getContentResolver();
+        int newValue = enabled ? 0 : 2;
+        LineageSettings.Secure.putIntForUser(resolver,
+                LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, newValue,
+                UserHandle.USER_CURRENT);
+        if (mShowBrightnessSlider != null) {
+            mShowBrightnessSlider.setValue(String.valueOf(newValue));
+        }
     }
 
     @Override
@@ -349,7 +369,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         } else if (preference == mQsWidgetPanel) {
-            updateWidgetPanelDependencies((Boolean) newValue);
+            boolean enabled = (Boolean) newValue;
+            updateWidgetPanelDependencies(enabled);
+            applyWidgetPanelBrightnessSlider(enabled);
             SystemUtils.showSystemUiRestartDialog(getActivity());
             return true;
         }

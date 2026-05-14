@@ -410,16 +410,22 @@ class TrickyStore : SettingsPreferenceFragment() {
     private fun extractCertSerials(xml: String): List<String> {
         val serials = mutableListOf<String>()
         val factory = CertificateFactory.getInstance("X.509")
-        val matcher = Pattern.compile(
-            "-----BEGIN CERTIFICATE-----([\\s\\S]+?)-----END CERTIFICATE-----"
+        val keyBlocks = Pattern.compile(
+            "<Key\\b[\\s\\S]*?</Key>"
         ).matcher(xml)
-        while (matcher.find()) {
-            try {
-                val der = Base64.decode(
-                    matcher.group(1)!!.replace("\\s".toRegex(), ""), Base64.DEFAULT)
-                val cert = factory.generateCertificate(ByteArrayInputStream(der)) as X509Certificate
-                serials.add(cert.serialNumber.toString(16).lowercase())
-            } catch (_: Exception) {}
+        val certPattern = Pattern.compile(
+            "-----BEGIN CERTIFICATE-----([\\s\\S]+?)-----END CERTIFICATE-----"
+        )
+        while (keyBlocks.find()) {
+            val certMatcher = certPattern.matcher(keyBlocks.group())
+            if (certMatcher.find()) {
+                try {
+                    val der = Base64.decode(
+                        certMatcher.group(1)!!.replace("\\s".toRegex(), ""), Base64.DEFAULT)
+                    val cert = factory.generateCertificate(ByteArrayInputStream(der)) as X509Certificate
+                    serials.add(cert.serialNumber.toString(16).lowercase())
+                } catch (_: Exception) {}
+            }
         }
         return serials
     }

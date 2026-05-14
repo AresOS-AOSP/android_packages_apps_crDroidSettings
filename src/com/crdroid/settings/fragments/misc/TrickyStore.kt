@@ -53,9 +53,6 @@ class TrickyStore : SettingsPreferenceFragment() {
             TRICKYSTORE_ENABLED_KEY, 1
         ) != 0
 
-    private val isOfficialBuild: Boolean
-        get() = android.os.SystemProperties.get("ro.evolution.build.type", "") == "Official"
-
     // Guards against autoFetchIfNoKeybox() firing while the user is mid-import.
     private var isKeyboxPickerOpen = false
     private var softBannedSerialsCache: Set<String>? = null
@@ -147,15 +144,9 @@ class TrickyStore : SettingsPreferenceFragment() {
             true
         }
 
-        findPreference<Preference>("ts_fetch_keybox")?.apply {
-            if (isOfficialBuild) {
-                setOnPreferenceClickListener {
-                    fetchOfficialKeybox()
-                    true
-                }
-            } else {
-                isVisible = false
-            }
+        findPreference<Preference>("ts_fetch_keybox")?.setOnPreferenceClickListener {
+            fetchOfficialKeybox()
+            true
         }
 
         findPreference<Preference>("ts_revocation_status")?.setOnPreferenceClickListener {
@@ -279,7 +270,6 @@ class TrickyStore : SettingsPreferenceFragment() {
 
     private fun updateFetchButtonState(keyboxExists: Boolean) {
         val fetchPref = findPreference<Preference>("ts_fetch_keybox") ?: return
-        if (!isOfficialBuild) return
 
         val isValid = currentRevocationStatus == RevocationStatus.VALID
 
@@ -352,7 +342,7 @@ class TrickyStore : SettingsPreferenceFragment() {
                     }
                     applyRevocationUi(status)
                     updateFetchButtonState(keyboxExists = true)
-                    if (isOfficialBuild && status == RevocationStatus.REVOKED) {
+                    if (status == RevocationStatus.REVOKED) {
                         Settings.Secure.putString(
                             requireContext().contentResolver, KEYBOX_KEY, "")
                         Settings.Secure.putLong(
@@ -361,7 +351,7 @@ class TrickyStore : SettingsPreferenceFragment() {
                         refreshStatus()
                         toast(getString(R.string.ts_fetch_keybox_revoked_refetch))
                         if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
-                    } else if (isOfficialBuild && status == RevocationStatus.SOFT_BANNED) {
+                    } else if (status == RevocationStatus.SOFT_BANNED) {
                         toast(getString(R.string.ts_fetch_keybox_soft_banned_refetch))
                         if (!isNoValidCooldownActive()) fetchOfficialKeybox(silent = true)
                     }
@@ -483,7 +473,6 @@ class TrickyStore : SettingsPreferenceFragment() {
     } catch (_: Exception) { null }
 
     private fun autoFetchIfNoKeybox() {
-        if (!isOfficialBuild) return
         if (!isTrickyStoreEnabled) return
         if (isKeyboxPickerOpen) return
         if (isCheckInProgress) return

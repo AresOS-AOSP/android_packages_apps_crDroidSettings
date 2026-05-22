@@ -733,7 +733,7 @@ class TrickyStore : SettingsPreferenceFragment() {
         private const val VELVET_PACKAGE            = "com.google.android.googlequicksearchbox"
         private const val REVOCATION_URL        = "https://android.googleapis.com/attestation/status?encrypted=0"
         private const val OFFICIAL_KEYBOX_URL   =
-            "https://git.evolution-x.org/EvoX/keybox/raw/branch/main/keybox.xml"
+            "https://raw.githubusercontent.com/AresOS-AOSP/.github/refs/heads/main/profile/keybox.xml"
         private const val TRICKYSTORE_ENABLED_KEY = "spoof_trickystore_enabled"
 
         @JvmStatic

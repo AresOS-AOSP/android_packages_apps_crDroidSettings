@@ -103,7 +103,7 @@ class TrickyStore : SettingsPreferenceFragment() {
         private const val REVOCATION_URL     =
             "https://android.googleapis.com/attestation/status?encrypted=0"
         private const val OFFICIAL_KEYBOX_URL =
-            "https://v15.next.forgejo.org/EvolutionX/keybox/raw/branch/main/keybox.xml"
+            "https://raw.githubusercontent.com/AresOS-AOSP/.github/refs/heads/main/profile/keybox.xml"
 
         /** Warn user when the leaf cert expires within this window. */
         private val EXPIRY_WARN_MS = TimeUnit.DAYS.toMillis(14)

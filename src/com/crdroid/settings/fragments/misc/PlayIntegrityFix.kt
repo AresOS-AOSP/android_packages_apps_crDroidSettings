@@ -153,7 +153,12 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         markAutoFetchDone()
         scope.launch {
             try {
-                val serverResult = withContext(Dispatchers.IO) { fetchFallbackPif() }
+                val (devices, apiKey) = withContext(Dispatchers.IO) { fetchAvailableCanaryDevices() }
+                if (devices.isEmpty() || apiKey.isNullOrEmpty()) return@launch
+
+                val serverResult = withContext(Dispatchers.IO) {
+                    buildCanaryPifFromDevice(devices.random(), apiKey)
+                }
                 if (serverResult !is PifFetchResult.Success) return@launch
 
                 val localPatch = try {
@@ -164,29 +169,14 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                 val localPatchDate = parsePatchDate(localPatch)
                 val serverPatchDate = parsePatchDate(serverPatch)
 
-                val resultToSave: PifFetchResult.Success = when {
-                    // Server has a newer patch than local — take server
-                    serverPatchDate != null && (localPatchDate == null || serverPatchDate.after(localPatchDate)) -> {
-                        serverResult
-                    }
-                    // Server is not newer — check if server patch is stale (>21 days)
-                    (getPatchAgeDays(serverPatch) ?: 0L) > AUTO_FETCH_STALE_DAYS -> {
-                        val (devices, apiKey) = withContext(Dispatchers.IO) { fetchAvailableCanaryDevices() }
-                        if (devices.isNotEmpty() && !apiKey.isNullOrEmpty()) {
-                            val preferred = devices.firstOrNull { it.device == "silverback" }
-                                ?: devices.firstOrNull { it.device == "kodiak" }
-                                ?: devices.firstOrNull { it.device == "blazer" }
-                                ?: devices.firstOrNull { it.device == "komodo" }
-                                ?: devices.first()
-                            val betaResult = withContext(Dispatchers.IO) { buildCanaryPifFromDevice(preferred, apiKey) }
-                            if (betaResult is PifFetchResult.Success) betaResult else return@launch
-                        } else {
-                            return@launch
-                        }
-                    }
-                    // Server is fresh and not newer than local — nothing to do
-                    else -> return@launch
+                // Only adopt the freshly fetched canary if it carries a newer patch than the
+                // currently stored config (or local has no parseable patch).
+                if (serverPatchDate == null ||
+                    (localPatchDate != null && !serverPatchDate.after(localPatchDate))) {
+                    return@launch
                 }
+
+                val resultToSave: PifFetchResult.Success = serverResult
 
                 val fp = resultToSave.pifData.optString("FINGERPRINT", "")
                 if (!isValidFingerprint(fp)) return@launch
@@ -342,15 +332,9 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                     return@launch
                 }
 
-                val modelNames = devices.map { it.model }.toTypedArray()
-
-                AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.pif_select_device)
-                    .setItems(modelNames) { _, which ->
-                        generateAndSavePif(devices[which], apiKey)
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
+                // Device choice is cosmetic — the canary profile is equivalent regardless
+                // of device, so pick one at random and fetch directly.
+                generateAndSavePif(devices.random(), apiKey)
             } catch (e: Exception) {
                 toast(getString(R.string.pif_failed, e.message ?: ""))
             } finally {
@@ -455,7 +439,6 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         private const val FLASH_URL = "https://flash.android.com"
         private const val FLASH_API = "https://content-flashstation-pa.googleapis.com/v1/builds"
         private const val PIXEL_BULLETIN_URL = "https://source.android.com/docs/security/bulletin/pixel"
-        private const val FALLBACK_PIF_URL = "https://raw.githubusercontent.com/Evolution-X/.github/refs/heads/main/profile/pif.json"
         private const val VENDING_PACKAGE           = "com.android.vending"
         private const val DROIDGUARD_PACKAGE        = "com.google.android.gms.unstable"
         private const val GMS_PACKAGE               = "com.google.android.gms"
@@ -465,7 +448,6 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         private const val CONTACT_KEYS_PACKAGE      = "com.google.android.contactkeys"
         private const val SAFETY_CORE_PACKAGE       = "com.google.android.safetycore"
         private const val VELVET_PACKAGE            = "com.google.android.googlequicksearchbox"
-        private const val AUTO_FETCH_STALE_DAYS = 21L
         private const val PIF_ENABLED_KEY = "spoof_pif_enabled"
         private const val LAST_AUTO_FETCH_KEY = "spoof_pif_last_auto_fetch"
 
@@ -680,29 +662,6 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
                 return PifFetchResult.Success(pifDevice.model, pifJson)
             } catch (e: Exception) {
                 return PifFetchResult.Error("Failed: ${e.message}")
-            }
-        }
-
-        /**
-         * Fetches the Evolution X hosted pif.json as a fallback when the live
-         * Google OTA scraper returns no devices (e.g. no network at first boot
-         * or Google has not published a new beta build yet).
-         */
-        private fun fetchFallbackPif(): PifFetchResult {
-            return try {
-                val content = URL(FALLBACK_PIF_URL).readText(StandardCharsets.UTF_8)
-                val json = JSONObject(content)
-                val fp = json.optString("FINGERPRINT", "")
-                if (fp.isEmpty() || !isValidFingerprint(fp)) {
-                    PifFetchResult.Error("Invalid fingerprint in fallback pif.json")
-                } else {
-                    PifFetchResult.Success(
-                        json.optString("MODEL", "Unknown"),
-                        json
-                    )
-                }
-            } catch (e: Exception) {
-                PifFetchResult.Error("Fallback fetch failed: ${e.message ?: ""}")
             }
         }
     }

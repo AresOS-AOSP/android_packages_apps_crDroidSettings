@@ -279,6 +279,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 mShowAutoBrightness.setVisible(!isSliderStyleEnabled);
             }
         }
+
+        if (mShowRingerMode != null) {
+            mShowRingerMode.setVisible(!isSliderStyleEnabled);
+        }
     }
 
     private boolean isWidgetPanelEnabled() {
@@ -474,6 +478,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     if (isSliderStyleEnabled) {
                         keys.add(KEY_BRIGHTNESS_SLIDER_SHAPE);
                         keys.add(KEY_SHOW_AUTO_BRIGHTNESS);
+                        keys.add(KEY_SHOW_RINGER_MODE);
                     }
 
                     return keys;

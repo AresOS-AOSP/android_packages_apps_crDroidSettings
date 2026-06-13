@@ -120,7 +120,7 @@
             android:title="@string/qs_show_volume_slider_title"
             android:entries="@array/qs_show_volume_slider_entries"
             android:entryValues="@array/qs_show_volume_slider_values"
-            android:defaultValue="1" />
+            android:defaultValue="0" />
 
         <com.crdroid.settings.preferences.SystemSettingListPreference
             android:key="qs_brightness_slider_shape"

@@ -76,19 +76,19 @@ class TrickyStore : SettingsPreferenceFragment() {
             "C6E5DC76BD81307046A3CCC979F0FAC6BDDEF46CC9B533B2134EB0E99F67550E"
 
         // Keys & setting names
-        private const val KEYBOX_KEY                 = "spoof_trickystore_keybox"
-        private const val KEYBOX_SOURCE_KEY          = "spoof_trickystore_keybox_source"
+        private const val KEYBOX_KEY                 = "spoof_trickystore_keybox_v2"
+        private const val KEYBOX_SOURCE_KEY          = "spoof_trickystore_keybox_source_v2"
         private const val KEYBOX_SOURCE_OFFICIAL     = "official"
         private const val KEYBOX_SOURCE_USER         = "user"
         private const val TARGET_KEY                 = TrickyStoreAppSettings.TARGET_KEY
-        internal const val PATCH_KEY                 = "spoof_trickystore_patch"
-        private const val LAST_FETCHED_KEY           = "spoof_trickystore_last_fetched"
-        private const val LAST_REVOCATION_CHECK_KEY  = "spoof_trickystore_last_revocation_check"
-        private const val LAST_NO_VALID_KEY          = "spoof_trickystore_last_no_valid"
-        private const val LAST_REVOCATION_STATUS_KEY = "spoof_trickystore_last_revocation_status"
-        private const val LAST_REVOCATION_REASON_KEY = "spoof_trickystore_last_revocation_reason"
+        internal const val PATCH_KEY                 = "spoof_trickystore_patch_v2"
+        private const val LAST_FETCHED_KEY           = "spoof_trickystore_last_fetched_v2"
+        private const val LAST_REVOCATION_CHECK_KEY  = "spoof_trickystore_last_revocation_check_v2"
+        private const val LAST_NO_VALID_KEY          = "spoof_trickystore_last_no_valid_v2"
+        private const val LAST_REVOCATION_STATUS_KEY = "spoof_trickystore_last_revocation_status_v2"
+        private const val LAST_REVOCATION_REASON_KEY = "spoof_trickystore_last_revocation_reason_v2"
 
-        private const val TRICKYSTORE_ENABLED_KEY    = "spoof_trickystore_enabled"
+        private const val TRICKYSTORE_ENABLED_KEY    = "spoof_trickystore_enabled_v2"
 
         private const val VENDING_PACKAGE            = "com.android.vending"
         private const val DROIDGUARD_PACKAGE         = "com.google.android.gms.unstable"
@@ -168,6 +168,12 @@ class TrickyStore : SettingsPreferenceFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (com.crdroid.settings.utils.DeviceUtils.isFenrir()) {
+            activity?.finish()
+            return
+        }
+
         addPreferencesFromResource(R.xml.tricky_store)
 
         findPreference<Preference>("ts_import_keybox")?.setOnPreferenceClickListener {

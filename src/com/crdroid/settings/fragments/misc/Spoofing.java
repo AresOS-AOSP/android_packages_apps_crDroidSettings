@@ -6,7 +6,6 @@
 package com.crdroid.settings.fragments.misc;
 
 import android.app.ActivityManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -15,7 +14,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
-import android.provider.Settings;
+
+import java.util.List;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -36,6 +36,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
 
     private static final String KEY_FEATURES_CATEGORY = "spoofing_features_category";
     private static final String KEY_APP_SPECIFIC_CATEGORY = "spoofing_app_specific_category";
+    private static final String KEY_INTEGRITY_CATEGORY = "spoofing_integrity_category";
     private static final String PI_PHOTOS_SPOOF = "pi_photos_spoof";
     private static final String PI_SNAPCHAT_SPOOF = "pi_snapchat_spoof";
     private static final String KEY_TENSOR_TARGETS = "tensor_targets_settings";
@@ -57,9 +58,15 @@ public class Spoofing extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.crdroid_settings_spoofing);
 
-        final Context context = getContext();
-        final ContentResolver resolver = context.getContentResolver();
         mHandler = new Handler(Looper.getMainLooper());
+
+        if (isFenrir()) {
+            PreferenceCategory integrityCategory =
+                    (PreferenceCategory) findPreference(KEY_INTEGRITY_CATEGORY);
+            if (integrityCategory != null) {
+                getPreferenceScreen().removePreference(integrityCategory);
+            }
+        }
 
         mFeaturesCategory = (PreferenceCategory) findPreference(KEY_FEATURES_CATEGORY);
         mAppSpecificCategory = (PreferenceCategory) findPreference(KEY_APP_SPECIFIC_CATEGORY);
@@ -91,6 +98,10 @@ public class Spoofing extends SettingsPreferenceFragment implements
         // SecureSettingSwitchPreference already syncs checked state from Settings.Secure
         pref.setOnPreferenceChangeListener(this);
         return pref;
+    }
+
+    private static boolean isFenrir() {
+        return com.crdroid.settings.utils.DeviceUtils.isFenrir();
     }
 
     private void scheduleKill(String pkg) {
@@ -149,5 +160,15 @@ public class Spoofing extends SettingsPreferenceFragment implements
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.xml.crdroid_settings_spoofing);
+            new BaseSearchIndexProvider(R.xml.crdroid_settings_spoofing) {
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    List<String> keys = super.getNonIndexableKeys(context);
+                    if (isFenrir()) {
+                        keys.add("tricky_store");
+                        keys.add("play_integrity_fix");
+                    }
+                    return keys;
+                }
+            };
 }

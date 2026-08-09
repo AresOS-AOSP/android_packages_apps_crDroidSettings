@@ -88,6 +88,12 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (com.crdroid.settings.utils.DeviceUtils.isFenrir()) {
+            activity?.finish()
+            return
+        }
+
         addPreferencesFromResource(R.xml.play_integrity_fix)
 
         findPreference<Preference>("pif_fetch_beta")?.setOnPreferenceClickListener {
@@ -485,7 +491,7 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
 
     companion object {
         private const val TAG = "PlayIntegrityFix"
-        private const val PIF_CONFIG_KEY = "spoof_pif_config"
+        private const val PIF_CONFIG_KEY = "spoof_pif_config_v2"
         private const val PIF_CONFIG_NAME = "pif.json"
         private const val GOOGLE_URL = "https://developer.android.com"
         private const val FLASH_URL = "https://flash.android.com"
@@ -502,8 +508,8 @@ class PlayIntegrityFix : SettingsPreferenceFragment() {
         private const val SAFETY_CORE_PACKAGE       = "com.google.android.safetycore"
         private const val VELVET_PACKAGE            = "com.google.android.googlequicksearchbox"
         private const val AUTO_FETCH_STALE_DAYS = 21L
-        private const val PIF_ENABLED_KEY = "spoof_pif_enabled"
-        private const val LAST_AUTO_FETCH_KEY = "spoof_pif_last_auto_fetch"
+        private const val PIF_ENABLED_KEY = "spoof_pif_enabled_v2"
+        private const val LAST_AUTO_FETCH_KEY = "spoof_pif_last_auto_fetch_v2"
         private const val MATCH_DEVICE_PROP = "ro.evolution.device"
 
         private val PIXEL_DEVICE_GENERATION = mapOf(

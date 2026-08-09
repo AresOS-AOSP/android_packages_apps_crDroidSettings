@@ -34,9 +34,33 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.Surface;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import static org.lineageos.internal.util.DeviceKeysConstants.*;
 
 public class DeviceUtils {
+
+    /* returns whether the given bare token is present on the kernel cmdline. */
+    public static boolean hasKernelCmdlineFlag(String token) {
+        try (BufferedReader reader =
+                new BufferedReader(new FileReader("/proc/cmdline"), 512)) {
+            String line = reader.readLine();
+            if (line == null) return false;
+            for (String arg : line.trim().split("\\s+")) {
+                if (arg.equals(token)) return true;
+            }
+        } catch (IOException e) {
+            // Ignore
+        }
+        return false;
+    }
+
+    /* returns whether the fenrir cmdline flag (fenrir=true) is set. */
+    public static boolean isFenrir() {
+        return hasKernelCmdlineFlag("fenrir=true");
+    }
 
     /* returns whether the device has a centered display cutout or not. */
     public static boolean hasCenteredCutout(Context context) {

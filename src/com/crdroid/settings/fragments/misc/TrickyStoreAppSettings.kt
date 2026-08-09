@@ -100,7 +100,7 @@ private val EXCLUDED_SUFFIXES = listOf(
 class TrickyStoreAppSettings : SettingsPreferenceFragment() {
 
     companion object {
-        const val TARGET_KEY = "spoof_trickystore_target"
+        const val TARGET_KEY = "spoof_trickystore_target_v2"
         val DEFAULT_TARGETS = setOf(
             "android",
             // GMS — AUTO mode, same as Specter (no special mode assigned)

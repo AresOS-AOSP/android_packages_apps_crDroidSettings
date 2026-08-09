@@ -18,14 +18,14 @@
     android:title="@string/tricky_store_title">
 
     <lineageos.preference.SystemSettingMainSwitchPreference
-        android:key="spoof_trickystore_enabled"
+        android:key="spoof_trickystore_enabled_v2"
         android:title="@string/ts_master_switch_title"
         android:defaultValue="true" />
 
     <PreferenceCategory
         android:key="ts_keybox_category"
         android:title="@string/ts_keybox_management"
-        android:dependency="spoof_trickystore_enabled">
+        android:dependency="spoof_trickystore_enabled_v2">
 
         <Preference
             android:key="ts_fetch_keybox"
@@ -52,7 +52,7 @@
     <PreferenceCategory
         android:key="ts_target_category"
         android:title="@string/ts_target_configuration"
-        android:dependency="spoof_trickystore_enabled">
+        android:dependency="spoof_trickystore_enabled_v2">
 
         <Preference
             android:key="ts_manage_targets"
